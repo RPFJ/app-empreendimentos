@@ -1,0 +1,56 @@
+<div class="wrapper">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded" id="sidebar">
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbarExample"> 
+    <ul class="navbar-nav list-unstyled components">
+      <li class="nav-item active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+        <ul class="navbar-nav collapse list-unstyled" id="homeSubmenu">
+          <li>
+              <a routerLink="/">Home</a>
+          </li>
+          <li>
+              <a href="#">Home 2</a>
+          </li>
+          <li>
+              <a href="#">Home 3</a>
+          </li>
+      </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" data-toggle="collapse" aria-expanded="false">Cooperativas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Evolução</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Questões</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Apoiador</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Rede Produtiva</a>
+      </li>
+
+      
+      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/register">Cadastro de Usuário</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/profile">{{ auth.getUsuarioDetails()?.nome}}</a>
+      </li>
+      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()" class="nav-item">
+        <a class="nav-link" routerLink="" (click)="auth.logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+<router-outlet></router-outlet>
