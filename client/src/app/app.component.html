@@ -1,56 +1,99 @@
 <div class="wrapper">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded" id="sidebar">
-  <div class="collapse navbar-collapse justify-content-md-center" id="navbarExample"> 
-    <ul class="navbar-nav list-unstyled components">
-      <li class="nav-item active">
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link dropdown-toggle">
-          <i class="fas fa-home"></i>
-          Home
-        </a>
-        <ul class="navbar-nav collapse list-unstyled" id="homeSubmenu">
-          <li>
-              <a routerLink="/">Home</a>
-          </li>
-          <li>
-              <a href="#">Home 2</a>
-          </li>
-          <li>
-              <a href="#">Home 3</a>
-          </li>
-      </ul>
-      </li>
+<nav id="sidebar"> 
+  <div class="sidebar-header">
+    <img id="recicle_img" src="../assets/img/recicle_img.png"  >
+    <h3>Recicla</h3>
+    <b>Birigui</b>
+  </div>
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/" data-toggle="collapse" aria-expanded="false">Cooperativas</a>
+    <ul class="list-unstyled components">
+          <li class="active">
+            <a routerLink="/">
+              <i class="fas fa-home"></i>
+              Home
+          </a>
       </li>
-      <li class="nav-item">
+      <li>
+        <a  href="#coopSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-building"></i>
+                        Cooperativas
+                    </a>
+                    <ul class="collapse list-unstyled" id="coopSubMenu">
+                        <li>
+                            <a href="#">Cadastro</a>
+                        </li>
+                        <li>
+                            <a href="#">Analise</a>
+                        </li>
+                        <li>
+                            <a href="#">Tipo</a>
+                        </li>
+                    </ul>
+                </li>
+      <li>
         <a class="nav-link" routerLink="/">Evolução</a>
       </li>
-      <li class="nav-item">
+      <li>
         <a class="nav-link" routerLink="/">Questões</a>
       </li>
-      <li class="nav-item">
+      <li>
         <a class="nav-link" routerLink="/">Apoiador</a>
       </li>
-      <li class="nav-item">
+      <li>
         <a class="nav-link" routerLink="/">Rede Produtiva</a>
       </li>
 
       
-      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/register">Cadastro de Usuário</a>
+      <li>
+          <a  href="#userSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            <i class="fas fa-user"></i>
+            Usuário
+        </a>
+        <ul *ngIf="!auth.isLoggedIn()" class="collapse list-unstyled" id="userSubMenu">
+          <li>
+            <a class="nav-link" routerLink="/register"> Cadastro de Usuário</a>
+          </li>            
+        </ul>
       </li>
-      <li *ngIf="auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/profile">{{ auth.getUsuarioDetails()?.nome}}</a>
-      </li>
-      <li *ngIf="!auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li *ngIf="auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="" (click)="auth.logout()">Logout</a>
-      </li>
+            
     </ul>
-  </div>
-</nav>
+  </nav>
+
+      <!-- Conteudo da pagina  -->
+      <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Esconder Menu</span>
+                </button>
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Página Inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Evolução</a>
+                        </li>
+                        <li *ngIf="auth.isLoggedIn()" >
+                          <a class="nav-link" routerLink="/profile">{{ auth.getUsuarioDetails()?.nome}}</a>
+                        </li>
+                        <li *ngIf="!auth.isLoggedIn()">
+                          <a class="nav-link" routerLink="/login">Entrar</a>
+                        </li>
+                        <li *ngIf="auth.isLoggedIn()" >
+                          <a class="nav-link" routerLink="" (click)="auth.logout()">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <router-outlet id="content"></router-outlet>
+    </div>
 </div>
-<router-outlet></router-outlet>
