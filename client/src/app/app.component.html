@@ -5,7 +5,6 @@
     <h3>Recicla</h3>
     <b>Birigui</b>
   </div>
-
     <ul class="list-unstyled components">
           <li class="active">
             <a routerLink="/">
@@ -15,36 +14,88 @@
       </li>
       <li>
         <a  href="#coopSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-building"></i>
-                        Cooperativas
-                    </a>
-                    <ul class="collapse list-unstyled" id="coopSubMenu">
-                        <li>
-                            <a href="#">Cadastro</a>
-                        </li>
-                        <li>
-                            <a href="#">Analise</a>
-                        </li>
-                        <li>
-                            <a href="#">Tipo</a>
-                        </li>
-                    </ul>
-                </li>
-      <li>
-        <a class="nav-link" routerLink="/">Evolução</a>
+        <i class="fas fa-building"></i>
+        Cooperativas
+        </a>
+        <ul class="collapse list-unstyled" id="coopSubMenu">
+            <li>
+                <a href="#">Cooperativas</a>
+            </li>
+            <li>
+                <a href="#">Atividade</a>
+            </li>
+            <li>
+                <a href="#">Area de Atuação</a>
+            </li>
+            <li>
+                <a href="#">Localização</a>
+            </li>
+            <li>
+              <a href="#">Formação Coletiva</a>
+            </li>
+            <li>
+              <a href="#">Tipo de Organização</a>
+            </li>
+            <li>
+                <a href="#">Contato</a>
+            </li>
+            <li>
+                <a href="#">Tipo de Contato</a>
+            </li>
+        </ul>
       </li>
       <li>
-        <a class="nav-link" routerLink="/">Questões</a>
+        <a  href="#redeSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fas fa-broadcast-tower"></i>
+          Rede Produtiva
+        </a>
+        <ul class="collapse list-unstyled" id="redeSubMenu">
+            <li>
+                <a href="#">Rede Produtiva</a>
+            </li>
+            <li>
+              <a href="#">Tipo de Rede</a>
+            </li>
+            <li>
+              <a href="#">Apoiador</a>
+            </li>
+        </ul>
       </li>
       <li>
-        <a class="nav-link" routerLink="/">Apoiador</a>
+        <a  href="#evolSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fas fa-chart-line"></i>
+          Evolução
+        </a>
+        <ul class="collapse list-unstyled" id="evolSubMenu">
+            <li>
+              <a href="#">Evolução</a>
+            </li>
+            <li>
+                <a href="#">Questões</a>
+            </li>
+            <li>
+              <a href="#">Alternativas</a>
+            </li>
+        </ul>
       </li>
       <li>
-        <a class="nav-link" routerLink="/">Rede Produtiva</a>
-      </li>
-
-      
-      <li>
+        <a  href="#reportSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+          <i class="fas fa-chart-pie"></i>
+          Relatórios e Análises
+        </a>
+        <ul class="collapse list-unstyled" id="reportSubMenu">
+            <li>
+              <a href="#">Evolução</a>
+            </li>
+            <li>
+                <a href="#">Desenvolvimento Local</a>
+            </li>
+            <li>
+              <a href="#">Desenvolvimento de Coleta</a>
+            </li>
+        </ul>
+      </li>      
+      <li *ngIf="!auth.isLoggedIn()">
           <a  href="#userSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             <i class="fas fa-user"></i>
             Usuário
@@ -55,16 +106,12 @@
           </li>            
         </ul>
       </li>
-            
     </ul>
   </nav>
-
       <!-- Conteudo da pagina  -->
       <div id="content">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                     <span> Esconder Menu</span>
@@ -72,7 +119,6 @@
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
