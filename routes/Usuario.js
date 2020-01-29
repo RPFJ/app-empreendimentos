@@ -37,7 +37,7 @@ usuario.post('/register', (req, res) => {
                 res.send('error: ' + err)
             })
         } else {
-            res.json({err: 'Usuario já cadastrada'})
+            res.json({err: 'Usuario já cadastrado'})
         }
     }).catch(err => {
         res.send('error: ' + err)

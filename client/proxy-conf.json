@@ -6,5 +6,13 @@
     "/areaAtuacao" : {
         "target" : "http://localhost:3000",
         "secure" : false
+    },
+    "/tipoContato" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/localizacao" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
     } 
 }

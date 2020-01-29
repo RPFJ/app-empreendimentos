@@ -66,10 +66,12 @@ export class AuthenticationService {
   }
 
   public register(usuario: TokenPayload): Observable<any> {
+    console.log("Register: ",usuario); 
     return this.http.post(`/usuario/register`, usuario)
   }
 
   public login(usuario: TokenPayload): Observable<any> {
+    console.log("Login: ",usuario); 
     const base = this.http.post(`/usuario/login`, usuario)
 
     const request = base.pipe(
