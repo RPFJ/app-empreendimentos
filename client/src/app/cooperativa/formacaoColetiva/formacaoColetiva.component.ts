@@ -3,24 +3,25 @@ import { RequestService } from "../../service/request.service";
 import { Router } from "@angular/router";
 
 @Component({
-    templateUrl: "./tipoContato.component.html"
+    templateUrl: "./formacaoColetiva.component.html"
   })
-export class TipoContatoComponent {
+export class FormacaoColetivaComponent {
     registro = {
-        idTipo_contato : 0,
-        nome_tipo: ""
+        idFormacao_coletiva : 0,
+        desc_formacao_coletiva: ""
     }
+        
 
     constructor(private record: RequestService, private router: Router) {}
 
-    tipoContato(){
-        this.record.register(this.registro, 'tipoContato').subscribe(
+    formacaoColetiva(){
+        this.record.register(this.registro, 'formacaoColetiva' ).subscribe(
             () => {
-                window.alert("Tipo de Contato cadastrado com sucesso!!!"); 
+                window.alert("Formação Coletiva cadastrada com sucesso!!!"); 
                 this.router.navigateByUrl("/");
             },
             err => {
-                window.alert("Não foi possível cadastrar Atividade!!!"); 
+                window.alert("Não foi possível cadastrar formação coletiva!!!"); 
                 console.error(err);
             }
         );

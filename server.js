@@ -22,12 +22,16 @@ var TipoContato             = require("./routes/Cooperativas/TipoContato");
 var Localizacao             = require("./routes/Cooperativas/Localizacao");
 var AtividadeCooperativa    = require("./routes/Cooperativas/AtividadeCooperativa");
 var FormacaoColetiva        = require("./routes/Cooperativas/FormacaoColetiva");
+var TipoOrganizacao         = require("./routes/Cooperativas/TipoOrganizacao");
+var Cooperativa             = require("./routes/Cooperativas/Cooperativa");
 
 app.use("/areaAtuacao", AreaAtuacao);
 app.use("/tipoContato", TipoContato); 
 app.use("/localizacao", Localizacao);
 app.use("/atividadeCooperativa", AtividadeCooperativa); 
 app.use("/formacaoColetiva", FormacaoColetiva);
+app.use("/tipoOrganizacao", TipoOrganizacao); 
+app.use("/cooperativa",Cooperativa ); 
 
 //Evolução
 var Questao = require("./routes/Evolucao/Questao");

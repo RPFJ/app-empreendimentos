@@ -15,4 +15,19 @@ tipoContato.post('/register', (req, res) => {
 })
 
 
+//Busca
+tipoContato.get('/list', (req, res) => {
+
+    TipoContato.findAll().then(tipoContato => {
+        if(tipoContato){
+            res.json(tipoContato)
+        }else{
+            res.send('Nada encontrado'); 
+        }
+    }).catch(err => {
+        res.send('error: ' + err)
+    }); 
+
+});
+
 module.exports = tipoContato

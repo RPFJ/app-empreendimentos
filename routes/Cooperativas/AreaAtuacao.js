@@ -15,4 +15,19 @@ areaAtuacao.post('/register', (req, res) => {
 })
 
 
+//Busca
+areaAtuacao.get('/list', (req, res) => {
+
+    AreaAtuacao.findAll().then(areaAtuacao => {
+        if(areaAtuacao){
+            res.json(areaAtuacao)
+        }else{
+            res.send('Nada encontrado'); 
+        }
+    }).catch(err => {
+        res.send('error: ' + err)
+    }); 
+
+});
+
 module.exports = areaAtuacao

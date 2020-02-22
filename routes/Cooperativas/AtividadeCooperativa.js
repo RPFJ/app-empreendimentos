@@ -15,4 +15,20 @@ atividadeCooperativa.post('/register', (req, res) => {
 })
 
 
+
+//Busca
+atividadeCooperativa.get('/list', (req, res) => {
+
+    AtividadeCooperativa.findAll().then(atividadeCooperativa => {
+        if(atividadeCooperativa){
+            res.json(atividadeCooperativa)
+        }else{
+            res.send('Nada encontrado'); 
+        }
+    }).catch(err => {
+        res.send('error: ' + err)
+    }); 
+
+});
+
 module.exports = atividadeCooperativa

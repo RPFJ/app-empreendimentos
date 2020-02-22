@@ -21,6 +21,7 @@ export class LocalizacaoComponent {
                 this.router.navigateByUrl("/");
             },
             err => {
+                window.alert("Não foi possível cadastrar Atividade!!!"); 
                 console.error(err);
             }
         );

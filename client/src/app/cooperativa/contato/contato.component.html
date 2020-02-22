@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form (submit)="contato()">
+          <h1 class="h3 mb-3 font-weight-normal">Cadastro de Contato</h1>
+          <div class="form-group">
+            <label for="nome">Contato</label>
+            <input type="text" class="form-control" name="nome" placeholder="Contato" [(ngModel)]="registro.desc_contato">
+          </div>
+          <div class="form-group">
+            <label for="selectTpContato">Tipo de Contato</label>
+            <select  class="form-control" placeholder="Contato" name ="selectTpContato" id="selectTpContato"[(ngModel)]="registro.id_tipo_contato">
+            <option *ngFor="let detail of details"  [value]="detail.idTipo_contato">
+              {{detail.nome_tipo}}
+            </option>
+          </select> 
+        </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <form (submit)="cooperativa()">
+          <h1 class="h3 mb-3 font-weight-normal">Cadastro de Cooperativa</h1>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" name="nome" placeholder="Cooperativa" [(ngModel)]="registro.nome">
+            </div>
+            <div class="col form-group">
+                <label for="selectAreaAtuacao">Área de atuação</label>
+                <select  class="form-control" placeholder="Área de Atuação" name ="selectAreaAtuacao" id="selectAreaAtuacao" [(ngModel)]="registro.id_area_atuacao">
+                <option *ngFor="let area of selects[0]"  [value]="area.idAreaAtuacao">
+                  {{area.desc_area_atuacao}}
+                </option>
+              </select> 
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="endereco">Endereço</label>
+              <input type="text" class="form-control" name="Endereco" placeholder="Endereço" [(ngModel)]="registro.endereco">
+            </div>
+            <div class="col form-group">
+                <label for="selectLocalizacao">Localização</label>
+                <select  class="form-control" placeholder="Localização" name ="selectLocalizacao" id="selectLocalizacao"[(ngModel)]="registro.id_localizacao">
+                <option *ngFor="let localizacao of selects[1]"  [value]="localizacao.idLocalizacao">
+                  {{localizacao.desc_localizacao}}
+                </option>
+              </select> 
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="selectTpOrganizacao">Tipo de Organização</label>
+              <select  class="form-control" placeholder="Tipo de Organização" name ="selectTpOrganizacao" id="selectTpOrganizacao"[(ngModel)]="registro.id_tipo_organizacao">
+              <option *ngFor="let organizacao of selects[2]"  [value]="organizacao.idTipoOrganizacao">
+                {{organizacao.nome_tipo}}
+              </option>
+            </select> 
+          </div>
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input type="text" class="form-control" name="cidade" placeholder="Cidade" [(ngModel)]="registro.cidade">
+          </div>
+          <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="text" class="form-control" name="latitude" placeholder="Latitude" [(ngModel)]="registro.latitude">
+          </div>
+          <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input type="text" class="form-control" name="longitude" placeholder="Longitude" [(ngModel)]="registro.longitude">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" name="email" placeholder="exemplo@ex.com.br" [(ngModel)]="registro.email">
+          </div>
+          <div class="form-group">
+            <label for="nome">Sigla</label>
+            <input type="text" class="form-control" name="sigla" placeholder="Sigla" [(ngModel)]="registro.sigla">
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>

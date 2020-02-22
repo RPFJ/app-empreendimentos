@@ -11,10 +11,16 @@ import { RegisterComponent } from './register/register.component'
 import { HomeComponent } from './home/home.component'
 import { TipoContatoComponent} from './cooperativa/tipoContato/tipoContato.component'
 import { LocalizacaoComponent} from './cooperativa/localizacao/localizacao.component'
+import { FormacaoColetivaComponent } from './cooperativa/formacaoColetiva/formacaoColetiva.component'
+import { AtividadeCooperativaComponent} from './cooperativa/atividadeCooperativa/atividadeCooperativa.component'
+import { ContatoComponent} from './cooperativa/contato/contato.component'
 
 import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service'
 import { RequestService } from './service/request.service'
+import { AreaAtuacaoComponent } from './cooperativa/areaAtuacao/areaAtuacao.component'
+import { TipoOrganizacaoComponent } from './cooperativa/tipoOrganizacao/tipoOrganizacao.component'
+import { CooperativaComponent } from './cooperativa/cooperativa/cooperativa.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +32,13 @@ const routes: Routes = [
     canActivate: [AuthGuardService]
   },
   { path: 'tipoContato', component: TipoContatoComponent},
-  { path: 'localizacao', component: LocalizacaoComponent}
+  { path: 'localizacao', component: LocalizacaoComponent},
+  { path: 'formacaoColetiva', component: FormacaoColetivaComponent},
+  { path: 'atividadeCooperativa', component: AtividadeCooperativaComponent},
+  { path: 'areaAtuacao', component: AreaAtuacaoComponent},
+  { path: 'tipoOrganizacao', component: TipoOrganizacaoComponent},
+  { path: 'contato', component: ContatoComponent},
+  { path: 'cooperativa', component: CooperativaComponent}
 ]
 
 @NgModule({
@@ -37,7 +49,13 @@ const routes: Routes = [
     RegisterComponent,
     HomeComponent,
     TipoContatoComponent,
-    LocalizacaoComponent    
+    LocalizacaoComponent,
+    FormacaoColetivaComponent,
+    AtividadeCooperativaComponent,
+    AreaAtuacaoComponent,
+    TipoOrganizacaoComponent, 
+    ContatoComponent,
+    CooperativaComponent
   ],
   imports: [
     BrowserModule,

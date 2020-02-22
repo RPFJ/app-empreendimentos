@@ -14,5 +14,21 @@
     "/localizacao" : {
         "target" : "http://localhost:3000",
         "secure" : false
-    } 
+    },
+    "/formacaoColetiva" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/atividadeCooperativa" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/tipoOrganizacao" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/cooperativa" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    }  
 }

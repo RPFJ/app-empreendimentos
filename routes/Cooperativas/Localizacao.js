@@ -14,5 +14,20 @@ localizacao.post('/register', (req, res) => {
         .catch(err => {res.send('error: ' + err)})
 })
 
+//Busca
+localizacao.get('/list', (req, res) => {
+
+    Localizacao.findAll().then(localizacao => {
+        if(localizacao){
+            res.json(localizacao)
+        }else{
+            res.send('Nada encontrado'); 
+        }
+    }).catch(err => {
+        res.send('error: ' + err)
+    }); 
+
+});
+
 
 module.exports = localizacao

@@ -24,10 +24,7 @@ module.exports = db.sequelize.define(
         longitude: {
             type: Sequelize.FLOAT
         },
-        login: {
-            type: Sequelize.STRING
-        },
-        senha: {
+        email: {
             type: Sequelize.STRING
         },
         sigla: {

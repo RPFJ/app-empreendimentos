@@ -3,20 +3,20 @@ import { RequestService } from "../../service/request.service";
 import { Router } from "@angular/router";
 
 @Component({
-    templateUrl: "./tipoContato.component.html"
+    templateUrl: "./tipoOrganizacao.component.html"
   })
-export class TipoContatoComponent {
+export class TipoOrganizacaoComponent {
     registro = {
-        idTipo_contato : 0,
+        idTipoOrganizacao: 0,
         nome_tipo: ""
     }
 
     constructor(private record: RequestService, private router: Router) {}
 
-    tipoContato(){
-        this.record.register(this.registro, 'tipoContato').subscribe(
+    tipoOrganizacao(){
+        this.record.register(this.registro, 'tipoOrganizacao').subscribe(
             () => {
-                window.alert("Tipo de Contato cadastrado com sucesso!!!"); 
+                window.alert("Tipo de Organizacao cadastrado com sucesso!!!"); 
                 this.router.navigateByUrl("/");
             },
             err => {

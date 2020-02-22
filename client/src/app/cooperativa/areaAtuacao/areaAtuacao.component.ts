@@ -3,24 +3,25 @@ import { RequestService } from "../../service/request.service";
 import { Router } from "@angular/router";
 
 @Component({
-    templateUrl: "./tipoContato.component.html"
+    templateUrl: "./areaAtuacao.component.html"
   })
-export class TipoContatoComponent {
+export class AreaAtuacaoComponent {
+    
     registro = {
-        idTipo_contato : 0,
-        nome_tipo: ""
+        idAreaAtuacao : 0,
+        desc_area_atuacao: ""
     }
 
     constructor(private record: RequestService, private router: Router) {}
 
-    tipoContato(){
-        this.record.register(this.registro, 'tipoContato').subscribe(
+    areaAtuacao(){
+        this.record.register(this.registro, 'areaAtuacao' ).subscribe(
             () => {
-                window.alert("Tipo de Contato cadastrado com sucesso!!!"); 
+                window.alert("Area de Atuação cadastrada com sucesso!!!"); 
                 this.router.navigateByUrl("/");
             },
             err => {
-                window.alert("Não foi possível cadastrar Atividade!!!"); 
+                window.alert("Não foi possível cadastrar a Área de Atuação!!!"); 
                 console.error(err);
             }
         );
