@@ -16,7 +16,7 @@ var Usuario = require("./routes/Usuario");
 
 app.use("/usuario", Usuario);
 
-//Cooperativa
+//Cooperativas
 var AreaAtuacao             = require("./routes/Cooperativas/AreaAtuacao");
 var TipoContato             = require("./routes/Cooperativas/TipoContato");
 var Localizacao             = require("./routes/Cooperativas/Localizacao");
@@ -35,8 +35,10 @@ app.use("/cooperativa",Cooperativa );
 
 //Evolução
 var Questao = require("./routes/Evolucao/Questao");
+var OpcaoQuestao = require("./routes/Evolucao/OpcaoQuestao");
 
 app.use("/questao", Questao); 
+app.use("/opcaoQuestao", OpcaoQuestao); 
 
 app.listen(port, function(){
     console.log("Servidor acaba de subir na porta " + port)
