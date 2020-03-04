@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
+import * as _ from 'lodash';
 
 // Componentes do login
 import { AppComponent } from './app.component'
@@ -31,6 +32,9 @@ import { ContatoComponent} from './cooperativa/contato/contato.component'
 import { OpcaoQuestaoComponent} from './evolucao/opcaoQuestao/opcaoQuestao.component'
 import { QuestaoComponent} from './evolucao/questao/questao.component'
 
+// Componentes da Rede Produtiva
+import { TipoRedeComponent} from './redeProdutiva/tipoRede/tipoRede.component'
+
 const routes: Routes = [
   // rotas do login
   { path: '', component: HomeComponent },
@@ -52,7 +56,9 @@ const routes: Routes = [
   { path: 'cooperativa', component: CooperativaComponent},
   // Rotas da Evolucao
   { path: 'questao', component: QuestaoComponent},
-  { path: 'opcaoQuestao', component: OpcaoQuestaoComponent}
+  { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
+  // Rotas da Rede Produtiva
+  { path: 'tipoRede', component: TipoRedeComponent}
 ]
 
 @NgModule({
@@ -74,7 +80,9 @@ const routes: Routes = [
     CooperativaComponent,
     // Evolução
     QuestaoComponent,
-    OpcaoQuestaoComponent
+    OpcaoQuestaoComponent,
+    // Rede Produtiva
+    TipoRedeComponent
   ],
   imports: [
     BrowserModule,

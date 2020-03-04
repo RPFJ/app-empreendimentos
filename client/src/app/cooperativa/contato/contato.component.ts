@@ -23,7 +23,7 @@ export class ContatoComponent {
     getTpContato (){
         this.record.findAll('tipoContato').subscribe(
             tipoContato => {
-                this.details =tipoContato;
+                this.details = tipoContato;
             },
             err => {
                 console.error('ContatoComponent.ts: ', err); 

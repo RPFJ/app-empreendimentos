@@ -12,7 +12,6 @@ contato.post('/register', (req, res) => {
     Contato.create(req.body)
         .then(contato => { res.json(contato)})
         .catch(err => {res.send('error: ' + err)})
-})
-
+});
 
 module.exports = contato

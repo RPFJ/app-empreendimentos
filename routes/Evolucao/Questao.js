@@ -8,17 +8,12 @@ questao.use(cors())
 process.env.SECRET_KEY = 'secret'
 
 // Cadastro
-
-// Questao.__factory = {autoIncrementField: 'idQuestao'}
-// Questao.idQuestao = ''
-
 questao.post('/register', (req, res) => {
-    console.log("chegou aqui", req); 
     Questao.create(req.body)
     .then(questao=> { 
         res.json(questao.dataValues); 
     })
-        .catch(err => {res.send('error: ' + err)})
+    .catch(err => {res.send('error: ' + err)})
 })
 
 //Busca

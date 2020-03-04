@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js", 
+    "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
     "cors": "2.8.4",
     "express": "^4.16.3",
     "jsonwebtoken": "^7.4.2",
+    "lodash": "^4.17.15",
     "mysql": "^2.14.1",
     "mysql2": "^1.6.1",
     "nodemon": "^1.18.3",
@@ -27,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/RPFJ/app-cooperativas/issues"
   },
-  "homepage": "https://github.com/RPFJ/app-cooperativas#readme"
+  "homepage": "https://github.com/RPFJ/app-cooperativas#readme",
+  "devDependencies": {
+    "@types/lodash": "^4.14.149"
+  }
 }

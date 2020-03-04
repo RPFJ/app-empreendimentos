@@ -38,5 +38,14 @@
     "/questao" : {
         "target" : "http://localhost:3000",
         "secure" : false
+    },
+    "/contato" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/tipoRede" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
     }  
+
 }

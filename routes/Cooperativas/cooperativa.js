@@ -8,8 +8,10 @@ process.env.SECRET_KEY = 'secret'
     // Cadastro
     cooperativa.post('/register', (req, res) => {
         Cooperativa.create(req.body)
-            .then(cooperativa => { res.json(cooperativa)})
-            .catch(err => {res.send('error: ' + err)})
+        .then(cooperativa=>{
+            res.json(cooperativa.dataValues);
+        })
+        .catch(err => {res.send('error: ' + err)})
     });
 
 

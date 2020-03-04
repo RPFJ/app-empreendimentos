@@ -9,14 +9,11 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        nome: {
+        desc_contato: {
             type: Sequelize.STRING
         },
         id_tipo_contato:{
             type: Sequelize.INTEGER, 
-        },
-        desc_contato: {
-            type: Sequelize.STRING
         },
         id_cooperativa: {
             type: Sequelize.INTEGER,

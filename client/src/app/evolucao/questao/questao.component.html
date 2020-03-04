@@ -10,7 +10,6 @@
             <label>Alternativas</label>
             <button type="button" class="btn btn-success btn-sm m-2" (click)= "addalternativa()"><i class="fa fa-plus"></i></button>
             <button type="button" class="btn btn-danger btn-sm m-2" (click)= "remAlternativa()"><i class="fa fa-times"></i></button>
-            <!-- <input class="form-control" formCountrolName="alternativa" type ="text" /> -->
             <div formArrayName="alternativas"  *ngFor="let alternativa of alternativas.controls; let i=index">
                 <input type="text" class="form-control my-1" [formControlName]="i">
             </div>

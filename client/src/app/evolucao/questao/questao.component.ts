@@ -52,7 +52,7 @@ export class QuestaoComponent {
                     array.id_questao = questao.idQuestao; 
                     this.record.register(array, 'opcaoQuestao').subscribe(); 
                 });
-                window.alert("Localizacao cadastrado com sucesso!!!"); 
+                window.alert("Questão cadastrada com sucesso!!!"); 
                 this.router.navigateByUrl("/");
             },
             err => {
@@ -70,7 +70,6 @@ export class QuestaoComponent {
     }
     
     onSubmit(){
-        console.log(this.registrationForm.value); 
         this.register(this.registrationForm.value); 
     }
 }
