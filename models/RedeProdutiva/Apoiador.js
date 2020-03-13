@@ -12,6 +12,9 @@ module.exports = db.sequelize.define(
         nome: {
             type: Sequelize.STRING
         },
+        cidade: {
+            type: Sequelize.STRING
+        },
         tipo_de_ajuda: {
             type: Sequelize.STRING
         }    

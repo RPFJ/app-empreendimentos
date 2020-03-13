@@ -35,6 +35,7 @@ import { QuestaoComponent} from './evolucao/questao/questao.component'
 // Componentes da Rede Produtiva
 import { TipoRedeComponent} from './redeProdutiva/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeProdutiva/apoiador/apoiador.component'
+import { RedeProdutivaComponent } from './redeProdutiva/redeProdutiva/redeProdutiva.component'
 
 const routes: Routes = [
   // rotas do login
@@ -60,7 +61,8 @@ const routes: Routes = [
   { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
   // Rotas da Rede Produtiva,
   { path: 'apoiador', component: ApoaidorComponent},
-  { path: 'tipoRede', component: TipoRedeComponent}
+  { path: 'tipoRede', component: TipoRedeComponent},
+  { path: 'redeProdutiva', component: RedeProdutivaComponent}
 ]
 
 @NgModule({
@@ -85,7 +87,8 @@ const routes: Routes = [
     OpcaoQuestaoComponent,
     // Rede Produtiva
     TipoRedeComponent,
-    ApoaidorComponent
+    ApoaidorComponent,
+    RedeProdutivaComponent
   ],
   imports: [
     BrowserModule,

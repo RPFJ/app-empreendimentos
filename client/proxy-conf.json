@@ -46,6 +46,18 @@
     "/tipoRede" : {
         "target" : "http://localhost:3000",
         "secure" : false
-    }  
+    },
+    "/apoiador" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/redeProdutiva" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    },
+    "/redeApoiador" : {
+        "target" : "http://localhost:3000",
+        "secure" : false
+    }      
 
 }

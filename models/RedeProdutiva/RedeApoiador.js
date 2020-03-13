@@ -2,16 +2,16 @@ const Sequelize = require('sequelize')
 const db = require("../../database/db.js")
 
 module.exports = db.sequelize.define(
-    'cdt_tp_rede',
+    'rede_produtiva_apoiador',
     {
-        idTipo_rede: {
+        id_rede_produtiva: {
             type: Sequelize.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            primaryKey: true
         },
-        desc_tipo: {
-            type: Sequelize.STRING
-        }        
+        id_apoiador: {
+            type: Sequelize.INTEGER,
+            primaryKey: true
+        }      
     }, 
     { 
         freezeTableName: true,

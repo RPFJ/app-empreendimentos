@@ -85,16 +85,18 @@ export class CooperativaComponent {
     }
 
     getInfo (components){
-        for(var i = 0; i < 4; i++){
-            this.record.findAll(components[i]).subscribe(
+        let record = this.record; 
+        let selects = this.selects; 
+        _.forEach(components, function(element) {
+            record.findAll(element).subscribe(
                 valores => {
-                    this.selects.push(valores);
+                    selects.push(valores);
                 },
                 err => {
-                    console.error('ContatoComponent.ts: ', err); 
+                    console.error('CooperativaComponent.ts: ', err); 
                 }
             ); 
-        }
+        }); 
     }; 
 
     register(dados){
@@ -106,7 +108,6 @@ export class CooperativaComponent {
             id_cooperativa: 0
         };
 
-        let valor = _.tail(contatos); 
         delete dados.contatos
         this.record.register(dados, 'cooperativa' ).subscribe(
             cooperativa => {

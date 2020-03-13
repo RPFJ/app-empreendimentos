@@ -45,9 +45,14 @@ app.use("/opcaoQuestao", OpcaoQuestao);
 // Rede Produtiva
 
 var TipoRede                 = require("./routes/RedeProdutiva/TipoRede");
+var Apoiador                 = require("./routes/RedeProdutiva/Apoiador");
+var RedeProdutiva           = require("./routes/RedeProdutiva/RedeProdutiva");
+var RedeApoiador            = require("./routes/RedeProdutiva/RedeApoiador");
 
+app.use("/apoiador", Apoiador); 
 app.use("/tipoRede", TipoRede); 
-
+app.use("/redeProdutiva", RedeProdutiva);
+app.use("/redeApoiador", RedeApoiador);
 
 app.listen(port, function(){
     console.log("Servidor acaba de subir na porta " + port)

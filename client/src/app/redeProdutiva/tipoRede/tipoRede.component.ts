@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 export class TipoRedeComponent {
     registro = {
         idTipo_rede: 0,
-        desc_rede: ""
+        desc_tipo: ""
     }
 
     constructor(private record: RequestService, private router: Router) {}
