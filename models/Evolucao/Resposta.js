@@ -2,18 +2,25 @@ const Sequelize = require('sequelize')
 const db = require("../../database/db.js")
 
 module.exports = db.sequelize.define(
-    'rede_produtiva_apoiador',
+    'cdt_resposta',
     {
-        id_rede_produtiva: {
+        idReposta: {
+            type: Sequelize.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        desc_respsota: {
+            type: Sequelize.STRING
+        },
+        id_questao: {
             type: Sequelize.INTEGER
         },
-        id_apoiador: {
+        id_evolucao: {
             type: Sequelize.INTEGER
-        }      
+        }        
     }, 
     { 
         freezeTableName: true,
         timestamps: false 
     }
 )
-module.exports.removeAttribute('id');

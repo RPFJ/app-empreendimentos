@@ -36,11 +36,15 @@ app.use("/cooperativa",Cooperativa );
 app.use("/contato",Contato ); 
 
 //Evolução
-var Questao = require("./routes/Evolucao/Questao");
-var OpcaoQuestao = require("./routes/Evolucao/OpcaoQuestao");
+var Questao         = require("./routes/Evolucao/Questao");
+var OpcaoQuestao    = require("./routes/Evolucao/OpcaoQuestao");
+var Evolucao        = require("./routes/Evolucao/Evolucao");
+var Resposta        = require("./routes/Evolucao/Resposta");
 
 app.use("/questao", Questao); 
 app.use("/opcaoQuestao", OpcaoQuestao); 
+app.use("/evolucao", Evolucao); 
+app.use("/resposta", Resposta); 
 
 // Rede Produtiva
 

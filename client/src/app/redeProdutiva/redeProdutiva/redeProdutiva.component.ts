@@ -80,22 +80,25 @@ export class RedeProdutivaComponent {
             id_apoiador: 0
         };
 
-        console.log('redeApoiadores', redeApoiadores);
-
         delete dados.apoiadores
-        console.log('Dados: ', dados);
 
         this.record.register(dados, 'redeProdutiva' ).subscribe(
             redeProdutiva => {
-                console.log('Rede Retorno: ', redeProdutiva); 
                 redeApoiadores.forEach( element => {
                     redeApoiador.id_apoiador = element.idApoiador;
                     redeApoiador.id_rede_produtiva = redeProdutiva.idRede_produtiva;
-                    console.log('Rede Apoiador: ', redeApoiador); 
-                    this.record.register(redeApoiador, 'redeApoiador' ).subscribe();
+                    this.record.register(redeApoiador, 'redeApoiador' ).subscribe(
+                        redeApoiador => {   
+                            console.log('cadastro executado'); 
+                        }, 
+                        err => {
+                            window.alert("Não foi possível cadastrar a Rede Produtiva !!!"); 
+                            console.error(err);
+                        }
+                    );
                 });
                 window.alert("Rede Produtiva cadastrada com sucesso!!!"); 
-                // this.router.navigateByUrl("/");
+                this.router.navigateByUrl("/");
             },
             err => {
                 window.alert("Não foi possível cadastrar a Rede Produtiva !!!"); 
@@ -116,7 +119,6 @@ export class RedeProdutivaComponent {
     }
 
     onSubmit() {
-        console.log('Valores passados', this.registrationForm.value);  
         this.register(this.registrationForm.value); 
     }
 }
