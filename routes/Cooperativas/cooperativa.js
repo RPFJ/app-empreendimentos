@@ -16,6 +16,7 @@ process.env.SECRET_KEY = 'secret'
 
 
 //Busca
+//Busca
 cooperativa.get('/list', (req, res) => {
 
     Cooperativa.findAll().then(cooperativa => {
@@ -29,5 +30,6 @@ cooperativa.get('/list', (req, res) => {
     }); 
 
 });
+
 
 module.exports = cooperativa

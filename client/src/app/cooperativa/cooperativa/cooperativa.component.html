@@ -31,7 +31,7 @@
               <input type="text" class="form-control" name="Endereco" placeholder="Endereço"formControlName="endereco">
             </div>
             <div class="col form-group">
-              <label for="selectLocalizacao">Área de atuação</label>
+              <label for="selectLocalizacao">Localização</label>
               <select  class="form-control" placeholder="Área de Atuação" name ="selectLocalizacao" id="selectLocalizacao" formControlName="id_localizacao">
                 <option *ngFor="let localizacao of selects[1]"  [value]="localizacao.idLocalizacao">
                   {{localizacao.desc_localizacao}}

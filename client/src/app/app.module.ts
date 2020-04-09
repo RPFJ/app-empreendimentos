@@ -36,6 +36,7 @@ import { QuestaoComponent} from './evolucao/questao/questao.component'
 import { TipoRedeComponent} from './redeProdutiva/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeProdutiva/apoiador/apoiador.component'
 import { RedeProdutivaComponent } from './redeProdutiva/redeProdutiva/redeProdutiva.component'
+import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
 
 const routes: Routes = [
   // rotas do login
@@ -59,6 +60,7 @@ const routes: Routes = [
   // Rotas da Evolucao
   { path: 'questao', component: QuestaoComponent},
   { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
+  { path: 'evolucao', component: EvolucaoComponent},
   // Rotas da Rede Produtiva,
   { path: 'apoiador', component: ApoaidorComponent},
   { path: 'tipoRede', component: TipoRedeComponent},
@@ -85,6 +87,7 @@ const routes: Routes = [
     // Evolução
     QuestaoComponent,
     OpcaoQuestaoComponent,
+    EvolucaoComponent,
     // Rede Produtiva
     TipoRedeComponent,
     ApoaidorComponent,
