@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-5 mx-auto">
+        <form (submit)="atividadeEmpreendimento()">
+          <h1 class="h3 mb-3 font-weight-normal">Atividade</h1>
+          <div class="form-group">
+            <label for="name">Atividade</label>
+            <input type="text" class="form-control" name="desc_atividade" placeholder="Atividade" [(ngModel)]="registro.desc_atividade">
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>

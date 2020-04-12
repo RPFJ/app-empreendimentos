@@ -24,10 +24,10 @@ module.exports = db.sequelize.define(
         internet: {
             type: Sequelize.BOOLEAN
         },
-        id_cooperativa: {
+        id_empreendimento: {
             type: Sequelize.INTEGER
         },   
-        id_rede_produtiva: {
+        id_rede_economica: {
             type: Sequelize.INTEGER
         }        
     }, 

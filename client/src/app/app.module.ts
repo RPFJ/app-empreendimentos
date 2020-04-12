@@ -18,24 +18,24 @@ import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service'
 import { RequestService } from './service/request.service'
 
-// Componentes das Cooperativas
-import { TipoContatoComponent} from './cooperativa/tipoContato/tipoContato.component'
-import { LocalizacaoComponent} from './cooperativa/localizacao/localizacao.component'
-import { FormacaoColetivaComponent } from './cooperativa/formacaoColetiva/formacaoColetiva.component'
-import { AtividadeCooperativaComponent} from './cooperativa/atividadeCooperativa/atividadeCooperativa.component'
-import { AreaAtuacaoComponent } from './cooperativa/areaAtuacao/areaAtuacao.component'
-import { TipoOrganizacaoComponent } from './cooperativa/tipoOrganizacao/tipoOrganizacao.component'
-import { CooperativaComponent } from './cooperativa/cooperativa/cooperativa.component'
-import { ContatoComponent} from './cooperativa/contato/contato.component'
+// Componentes das Empreendimentos
+import { TipoContatoComponent} from './empreendimento/tipoContato/tipoContato.component'
+import { LocalizacaoComponent} from './empreendimento/localizacao/localizacao.component'
+import { FormacaoColetivaComponent } from './empreendimento/formacaoColetiva/formacaoColetiva.component'
+import { AtividadeEmpreendimentoComponent} from './empreendimento/atividadeEmpreendimento/atividadeEmpreendimento.component'
+import { AreaAtuacaoComponent } from './empreendimento/areaAtuacao/areaAtuacao.component'
+import { TipoOrganizacaoComponent } from './empreendimento/tipoOrganizacao/tipoOrganizacao.component'
+import { EmpreendimentoComponent } from './empreendimento/empreendimento/empreendimento.component'
+import { ContatoComponent} from './empreendimento/contato/contato.component'
 
 // Componentes da Evolucao
 import { OpcaoQuestaoComponent} from './evolucao/opcaoQuestao/opcaoQuestao.component'
 import { QuestaoComponent} from './evolucao/questao/questao.component'
 
-// Componentes da Rede Produtiva
-import { TipoRedeComponent} from './redeProdutiva/tipoRede/tipoRede.component'
-import { ApoaidorComponent } from './redeProdutiva/apoiador/apoiador.component'
-import { RedeProdutivaComponent } from './redeProdutiva/redeProdutiva/redeProdutiva.component'
+// Componentes da Rede Economica
+import { TipoRedeComponent} from './redeEconomica/tipoRede/tipoRede.component'
+import { ApoaidorComponent } from './redeEconomica/apoiador/apoiador.component'
+import { RedeEconomicaComponent } from './redeEconomica/redeEconomica/redeEconomica.component'
 import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
 
 const routes: Routes = [
@@ -48,23 +48,23 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuardService]
   },
-  // Rotas da Cooperativa
+  // Rotas da Empreendimento
   { path: 'tipoContato', component: TipoContatoComponent},
   { path: 'localizacao', component: LocalizacaoComponent},
   { path: 'formacaoColetiva', component: FormacaoColetivaComponent},
-  { path: 'atividadeCooperativa', component: AtividadeCooperativaComponent},
+  { path: 'atividadeEmpreendimento', component: AtividadeEmpreendimentoComponent},
   { path: 'areaAtuacao', component: AreaAtuacaoComponent},
   { path: 'tipoOrganizacao', component: TipoOrganizacaoComponent},
   { path: 'contato', component: ContatoComponent},
-  { path: 'cooperativa', component: CooperativaComponent},
+  { path: 'empreendimento', component: EmpreendimentoComponent},
   // Rotas da Evolucao
   { path: 'questao', component: QuestaoComponent},
   { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
   { path: 'evolucao', component: EvolucaoComponent},
-  // Rotas da Rede Produtiva,
+  // Rotas da Rede Economica,
   { path: 'apoiador', component: ApoaidorComponent},
   { path: 'tipoRede', component: TipoRedeComponent},
-  { path: 'redeProdutiva', component: RedeProdutivaComponent}
+  { path: 'redeEconomica', component: RedeEconomicaComponent}
 ]
 
 @NgModule({
@@ -75,23 +75,23 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    // Cooperativa
+    // Empreendimento
     TipoContatoComponent,
     LocalizacaoComponent,
     FormacaoColetivaComponent,
-    AtividadeCooperativaComponent,
+    AtividadeEmpreendimentoComponent,
     AreaAtuacaoComponent,
     TipoOrganizacaoComponent, 
     ContatoComponent,
-    CooperativaComponent,
+    EmpreendimentoComponent,
     // Evolução
     QuestaoComponent,
     OpcaoQuestaoComponent,
     EvolucaoComponent,
-    // Rede Produtiva
+    // Rede Economica
     TipoRedeComponent,
     ApoaidorComponent,
-    RedeProdutivaComponent
+    RedeEconomicaComponent
   ],
   imports: [
     BrowserModule,

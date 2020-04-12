@@ -19,7 +19,7 @@
         "target" : "http://localhost:3000",
         "secure" : false
     },
-    "/atividadeCooperativa" : {
+    "/atividadeEmpreendimento" : {
         "target" : "http://localhost:3000",
         "secure" : false
     },
@@ -27,7 +27,7 @@
         "target" : "http://localhost:3000",
         "secure" : false
     },
-    "/cooperativa" : {
+    "/empreendimento" : {
         "target" : "http://localhost:3000",
         "secure" : false
     },
@@ -51,7 +51,7 @@
         "target" : "http://localhost:3000",
         "secure" : false
     },
-    "/redeProdutiva" : {
+    "/redeEconomica" : {
         "target" : "http://localhost:3000",
         "secure" : false
     },

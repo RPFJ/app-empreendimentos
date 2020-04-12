@@ -16,23 +16,23 @@ var Usuario = require("./routes/Usuario");
 
 app.use("/usuario", Usuario);
 
-//Cooperativas
-var AreaAtuacao             = require("./routes/Cooperativas/AreaAtuacao");
-var TipoContato             = require("./routes/Cooperativas/TipoContato");
-var Localizacao             = require("./routes/Cooperativas/Localizacao");
-var AtividadeCooperativa    = require("./routes/Cooperativas/AtividadeCooperativa");
-var FormacaoColetiva        = require("./routes/Cooperativas/FormacaoColetiva");
-var TipoOrganizacao         = require("./routes/Cooperativas/TipoOrganizacao");
-var Cooperativa             = require("./routes/Cooperativas/Cooperativa");
-var Contato                 = require("./routes/Cooperativas/Contato");
+//Empreendimentos
+var AreaAtuacao                 = require("./routes/Empreendimentos/AreaAtuacao");
+var TipoContato                 = require("./routes/Empreendimentos/TipoContato");
+var Localizacao                 = require("./routes/Empreendimentos/Localizacao");
+var AtividadeEmpreendimento     = require("./routes/Empreendimentos/AtividadeEmpreendimento");
+var FormacaoColetiva            = require("./routes/Empreendimentos/FormacaoColetiva");
+var TipoOrganizacao             = require("./routes/Empreendimentos/TipoOrganizacao");
+var Empreendimento              = require("./routes/Empreendimentos/Empreendimento");
+var Contato                     = require("./routes/Empreendimentos/Contato");
 
 app.use("/areaAtuacao", AreaAtuacao);
 app.use("/tipoContato", TipoContato); 
 app.use("/localizacao", Localizacao);
-app.use("/atividadeCooperativa", AtividadeCooperativa); 
+app.use("/atividadeEmpreendimento", AtividadeEmpreendimento); 
 app.use("/formacaoColetiva", FormacaoColetiva);
 app.use("/tipoOrganizacao", TipoOrganizacao); 
-app.use("/cooperativa",Cooperativa );
+app.use("/empreendimento", Empreendimento );
 app.use("/contato",Contato ); 
 
 //Evolução
@@ -46,16 +46,16 @@ app.use("/opcaoQuestao", OpcaoQuestao);
 app.use("/evolucao", Evolucao); 
 app.use("/resposta", Resposta); 
 
-// Rede Produtiva
+// Rede Economica
 
-var TipoRede                 = require("./routes/RedeProdutiva/TipoRede");
-var Apoiador                 = require("./routes/RedeProdutiva/Apoiador");
-var RedeProdutiva           = require("./routes/RedeProdutiva/RedeProdutiva");
-var RedeApoiador            = require("./routes/RedeProdutiva/RedeApoiador");
+var TipoRede                    = require("./routes/RedeEconomica/TipoRede");
+var Apoiador                    = require("./routes/RedeEconomica/Apoiador");
+var RedeEconomica               = require("./routes/RedeEconomica/RedeEconomica");
+var RedeApoiador                = require("./routes/RedeEconomica/RedeApoiador");
 
 app.use("/apoiador", Apoiador); 
 app.use("/tipoRede", TipoRede); 
-app.use("/redeProdutiva", RedeProdutiva);
+app.use("/redeEconomica", RedeEconomica);
 app.use("/redeApoiador", RedeApoiador);
 
 app.listen(port, function(){

@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-5 mx-auto">
+        <form [formGroup]="registrationForm" (ngSubmit) ="onSubmit()">
+          <h1 class="h3 mb-3 font-weight-normal">Cadastro de Empreendimento</h1>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="nome">Nome</label>
+              <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="Empreendimento" >
+            </div>
+            <div class="col form-group">
+                <label for="selectAreaAtuacao">Área de atuação</label>
+                <select  class="form-control" placeholder="Área de Atuação" name ="selectAreaAtuacao" id="selectAreaAtuacao" formControlName="id_area_atuacao">
+                <option *ngFor="let area of selects[0]"  [value]="area.idAreaAtuacao">
+                  {{area.desc_area_atuacao}}
+                </option>
+              </select> 
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="selectTpOrganizacao">Tipo de Organização</label>
+            <select  class="form-control" placeholder="Tipo de Organização" name ="selectTpOrganizacao" id="selectTpOrganizacao" formControlName="id_tipo_organizacao">
+              <option *ngFor="let organizacao of selects[2]"  [value]="organizacao.idTipoOrganizacao">
+                {{organizacao.nome_tipo}}
+              </option>
+            </select> 
+          </div>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="endereco">Endereço</label>
+              <input type="text" class="form-control" name="Endereco" placeholder="Endereço"formControlName="endereco">
+            </div>
+            <div class="col form-group">
+              <label for="selectLocalizacao">Localização</label>
+              <select  class="form-control" placeholder="Área de Atuação" name ="selectLocalizacao" id="selectLocalizacao" formControlName="id_localizacao">
+                <option *ngFor="let localizacao of selects[1]"  [value]="localizacao.idLocalizacao">
+                  {{localizacao.desc_localizacao}}
+                </option>
+              </select> 
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Contatos</label>
+            <button type="button" class="btn btn-success btn-sm m-2" (click)= "addContato()"><i class="fa fa-plus"></i></button>
+            <div formArrayName="contatos">
+              <div *ngFor="let contato of contatos().controls; let i=index">
+                <div [formGroupName]="i">
+                  <div class="row form-group">
+                    <div class="col form-group">
+                      <label for="nome">Contato</label>
+                      <input type="text" class="form-control" name="nome" placeholder="Contato"  formControlName="descContato">
+                    </div>
+                    <div class="col form-group">
+                      <label for="selectTpContato">Tipo de Contato</label>
+                      <select  class="form-control" placeholder="Contato" name ="selectTpContato" id="selectTpContato" formControlName="idTpContato">
+                        <option *ngFor="let tpContato of selects[3]"  [value]="tpContato.idTipo_contato">
+                          {{tpContato.nome_tipo}}
+                        </option>
+                      </select> 
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm m-2" (click)= "remContato(i)"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input type="text" class="form-control" name="cidade" placeholder="Cidade" formControlName="cidade">
+          </div>
+          <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="text" class="form-control" name="latitude" placeholder="Latitude" formControlName="latitude">
+          </div>
+          <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input type="text" class="form-control" name="longitude" placeholder="Longitude" formControlName="longitude">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" class="form-control" name="email" placeholder="exemplo@ex.com.br" formControlName="email">
+          </div>
+          <div class="form-group">
+            <label for="nome">Sigla</label>
+            <input type="text" class="form-control" name="sigla" placeholder="Sigla" formControlName="sigla">
+          </div>
+          <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>

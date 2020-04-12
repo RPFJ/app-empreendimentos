@@ -14,11 +14,11 @@ export class EvolucaoComponent {
         n_mulheres: 0,
         computador: 0, 
         internet: 0,                   
-        id_cooperativa: 0,                   
-        id_rede_produtiva: 0,                    
+        id_empreendimento: 0,                   
+        id_rede_economica: 0,                    
 
     }
-    components = ['cooperativa', 'redeProdutiva',];
+    components = ['empreendimento', 'redeEconomica',];
     selects = []; 
 
     constructor(private record: RequestService, private router: Router) {
