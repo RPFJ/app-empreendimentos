@@ -16,7 +16,6 @@ export class EvolucaoComponent {
         internet: 0,                   
         id_empreendimento: 0,                   
         id_rede_economica: 0,                    
-
     }
     components = ['empreendimento', 'redeEconomica',];
     selects = []; 
@@ -29,16 +28,11 @@ export class EvolucaoComponent {
         let record = this.record; 
         let selects = this.selects;
         let components = this.components; 
-        console.log('record', record);
-        console.log('selects', selects);
-        console.log('components', components);
 
         _.forEach(components, function(element) {
             record.findAll(element).subscribe(
-                valores => {
-                    console.log('valores', valores);
-            selects.push(valores);
-                    console.log('selects', selects);
+                valores => { 
+                    selects.push(valores);
                 },
                 err => {
                     console.error('EvolucaoComponent.ts: ', err); 
@@ -46,7 +40,18 @@ export class EvolucaoComponent {
             ); 
         });        
     }; 
-
-
+    
+    registrar() {
+        this.record.register(this.registro, 'evolucao').subscribe(
+            () => {
+                window.alert("Relatório de evolução enviado com sucesso!!!"); 
+                this.router.navigateByUrl("/");
+            },
+            err => {
+                window.alert("Não foi possível enviar o relatório de evolução!!!"); 
+                console.error(err);
+            }
+        );
+    }
         
 }

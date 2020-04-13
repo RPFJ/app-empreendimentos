@@ -20,7 +20,7 @@ export class TipoContatoComponent {
                 this.router.navigateByUrl("/");
             },
             err => {
-                window.alert("Não foi possível cadastrar Atividade!!!"); 
+                window.alert("Não foi possível cadastrar o Tipo de Contato!!!"); 
                 console.error(err);
             }
         );

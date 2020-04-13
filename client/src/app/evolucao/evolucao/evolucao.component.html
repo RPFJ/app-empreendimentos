@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
       <div class="col-md-8 mt-5 mx-auto">
-        <form (submit)="opcaoQuestao()">
+        <form (submit)="registrar()">
           <h1 class="h3 mb-3 font-weight-normal">Relatório de evolução</h1>
           <div class="form-group">
             <label for="selectEmpreendimento">Empreendimento</label>
@@ -14,35 +14,53 @@
           <div class="form-group">
             <label for="selectRedeEconomica">Rede Economica</label>
             <select  class="form-control" placeholder="Rede Economica" name ="selectRedeEconomica" id="selectRedeEconomica"[(ngModel)]="registro.id_rede_economica">
-              <option *ngFor="let redeEconomica of selects[1]"  [value]="redeEconomica.idRede_produtiva">
+              <option *ngFor="let redeEconomica of selects[1]"  [value]="redeEconomica.idRede_economica">
                 {{redeEconomica.desc_rede}}
+              </option>
+            </select> 
+          </div>
+          <div class="form-group">
+            <label for="selectGeracaoRenda">Geração de renda</label>
+            <select  class="form-control" placeholder="Geração de Renda" name ="selectGeracaoRenda" id="selectGeracaoRenda"[(ngModel)]="registro.id_rede_economica">
+              <option *ngFor="let geracaoRenda of selects[1]"  [value]="geracaoRenda.idRede_economica">
+                {{geracaoRenda.desc_rede}}
               </option>
             </select> 
           </div>
             <div class= 'form-group'>
                 <div class="form-check form-check-inline" id="computador">
-                    <input class="form-check-input" type="radio" name="computador" id="pc1" >
+                    <input class="form-check-input" type="radio" name="computador" id="pc1" value="1" [(ngModel)]="registro.computador">
                     <label class="form-check-label" for="pc1">Possui computadores no local</label>
                 </div>
                 <div class="form-check form-check-inline" id="computador">
-                    <input class="form-check-input" type="radio" name="computador" id="pc2"  checked="true">
+                    <input class="form-check-input" type="radio" name="computador" id="pc2" value="0" checked  [(ngModel)]="registro.computador" >
                     <label class="form-check-label" for="pc2">Sem computador no local</label>
                 </div>
             </div>
-            <div class= 'form-group' name= "internet">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="internet" id="net1" >
-                    <label class="form-check-label" for="net1">Possui internet no local</label>
+            <div class= 'form-group'>
+              <div class="form-check form-check-inline" id="internet">
+                  <input class="form-check-input" type="radio" name="internet" id="net1" value="1" [(ngModel)]="registro.internet">
+                  <label class="form-check-label" for="net1">Possui internet no local</label>
+              </div>
+              <div class="form-check form-check-inline" id="internet">
+                  <input class="form-check-input" type="radio" name="internet" id="net2" value="0" checked  [(ngModel)]="registro.internet">
+                  <label class="form-check-label" for="net2">Sem internet no local</label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col form-group">
+                <div class="md-form">
+                  <label for="mulheres">Número de Homens:</label>
+                  <input type="number" class="form-control" id="homens" mdbInput min="0" name="homens" value="0" [(ngModel)]="registro.n_homens">
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="internet" id="net2"   checked="true">
-                    <label class="form-check-label" for="net2">Sem internet no local</label>
+              </div>
+              <div class="col form-group">
+                <div class="md-form">
+                  <label for="mulheres">Número de Mulheres:</label>
+                  <input type="number" class="form-control" id="mulheres" min="0" name="mulheres" value="0" [(ngModel)]="registro.n_mulheres">
                 </div>
-          </div>
-          <div class="form-group">
-            
-
-          </div>
+              </div>
+            </div>
           
           <button type="submit" class="btn btn-lg btn-primary btn-block">Cadastrar</button>
         </form>

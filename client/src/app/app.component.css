@@ -72,6 +72,7 @@ a:focus {
     min-width: 250px;
     max-width: 250px;
     background: url(../assets/img/bg1.jpg);
+    /*background: url(../assets/img/bg2.png);*/
     color: #fff;
     transition: all 0.3s;
 }
