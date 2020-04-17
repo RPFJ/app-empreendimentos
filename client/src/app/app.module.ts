@@ -37,6 +37,7 @@ import { TipoRedeComponent} from './redeEconomica/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeEconomica/apoiador/apoiador.component'
 import { RedeEconomicaComponent } from './redeEconomica/redeEconomica/redeEconomica.component'
 import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
+import { GeracaoRendaComponent } from './evolucao/geracaoRenda/geracaoRenda.component'
 
 const routes: Routes = [
   // rotas do login
@@ -61,6 +62,7 @@ const routes: Routes = [
   { path: 'questao', component: QuestaoComponent},
   { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
   { path: 'evolucao', component: EvolucaoComponent},
+  { path: 'geracaoRenda', component: GeracaoRendaComponent},
   // Rotas da Rede Economica,
   { path: 'apoiador', component: ApoaidorComponent},
   { path: 'tipoRede', component: TipoRedeComponent},
@@ -88,6 +90,7 @@ const routes: Routes = [
     QuestaoComponent,
     OpcaoQuestaoComponent,
     EvolucaoComponent,
+    GeracaoRendaComponent, 
     // Rede Economica
     TipoRedeComponent,
     ApoaidorComponent,

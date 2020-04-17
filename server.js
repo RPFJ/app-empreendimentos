@@ -40,11 +40,13 @@ var Questao         = require("./routes/Evolucao/Questao");
 var OpcaoQuestao    = require("./routes/Evolucao/OpcaoQuestao");
 var Evolucao        = require("./routes/Evolucao/Evolucao");
 var Resposta        = require("./routes/Evolucao/Resposta");
+var GeracaoRenda    = require("./routes/Evolucao/GeracaoRenda");
 
 app.use("/questao", Questao); 
 app.use("/opcaoQuestao", OpcaoQuestao); 
 app.use("/evolucao", Evolucao); 
 app.use("/resposta", Resposta); 
+app.use("/geracaoRenda", GeracaoRenda); 
 
 // Rede Economica
 
