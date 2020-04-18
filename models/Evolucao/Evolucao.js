@@ -9,7 +9,7 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        geracao_renda: {
+        id_geracao_renda: {
             type: Sequelize.FLOAT
         },
         n_homens: {
