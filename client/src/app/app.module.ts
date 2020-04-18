@@ -31,13 +31,13 @@ import { ContatoComponent} from './empreendimento/contato/contato.component'
 // Componentes da Evolucao
 import { OpcaoQuestaoComponent} from './evolucao/opcaoQuestao/opcaoQuestao.component'
 import { QuestaoComponent} from './evolucao/questao/questao.component'
+import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
+import { GeracaoRendaComponent} from './evolucao/geracaoRenda/geracaoRenda.component'
 
 // Componentes da Rede Economica
 import { TipoRedeComponent} from './redeEconomica/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeEconomica/apoiador/apoiador.component'
 import { RedeEconomicaComponent } from './redeEconomica/redeEconomica/redeEconomica.component'
-import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
-import { GeracaoRendaComponent } from './evolucao/geracaoRenda/geracaoRenda.component'
 
 const routes: Routes = [
   // rotas do login

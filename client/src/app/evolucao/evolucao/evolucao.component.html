@@ -21,9 +21,9 @@
           </div>
           <div class="form-group">
             <label for="selectGeracaoRenda">Geração de renda</label>
-            <select  class="form-control" placeholder="Geração de Renda" name ="selectGeracaoRenda" id="selectGeracaoRenda"[(ngModel)]="registro.id_rede_economica">
-              <option *ngFor="let geracaoRenda of selects[1]"  [value]="geracaoRenda.idRede_economica">
-                {{geracaoRenda.desc_rede}}
+            <select  class="form-control" placeholder="Geração de Renda" name ="selectGeracaoRenda" id="selectGeracaoRenda"[(ngModel)]="registro.id_geracao_renda">
+              <option *ngFor="let geracaoRenda of selects[2]"  [value]="geracaoRenda.idGeracao_renda">
+                {{geracaoRenda.desc_renda}}
               </option>
             </select> 
           </div>

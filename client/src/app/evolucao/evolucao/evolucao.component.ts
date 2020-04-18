@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 export class EvolucaoComponent {
     registro = {
         idEvolucao: 0,                   
-        geracao_renda: 0,                    
+        id_geracao_renda: 0,                    
         n_homens: 0,                     
         n_mulheres: 0,
         computador: 0, 
@@ -17,7 +17,7 @@ export class EvolucaoComponent {
         id_empreendimento: 0,                   
         id_rede_economica: 0,                    
     }
-    components = ['empreendimento', 'redeEconomica',];
+    components = ['empreendimento', 'redeEconomica','geracaoRenda'];
     selects = []; 
 
     constructor(private record: RequestService, private router: Router) {
