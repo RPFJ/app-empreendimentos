@@ -4,7 +4,8 @@ import { Router } from "@angular/router";
 import * as _ from 'lodash';
 
 @Component({
-    templateUrl: "./evolucao.component.html"
+    templateUrl: "./evolucao.component.html",
+    styles: ["./evolucao.component.css"]
   })
 export class EvolucaoComponent {
     registro = {
