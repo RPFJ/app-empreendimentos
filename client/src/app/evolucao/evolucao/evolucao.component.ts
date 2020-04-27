@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, NgModule } from "@angular/core";
 import { RequestService } from "../../service/request.service";
 import { Router } from "@angular/router";
 import * as _ from 'lodash';

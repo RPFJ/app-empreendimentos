@@ -38,6 +38,9 @@ import { GeracaoRendaComponent} from './evolucao/geracaoRenda/geracaoRenda.compo
 import { TipoRedeComponent} from './redeEconomica/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeEconomica/apoiador/apoiador.component'
 import { RedeEconomicaComponent } from './redeEconomica/redeEconomica/redeEconomica.component'
+import { FormularioComponent } from './evolucao/multiStepForm/formulario.componet'
+import { MultiStepFormComponent } from './evolucao/multiStepForm/multi-step-form.component'
+import { FormatTitlePipe } from './pipes/format-title.pipe'
 
 const routes: Routes = [
   // rotas do login
@@ -63,6 +66,10 @@ const routes: Routes = [
   { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
   { path: 'evolucao', component: EvolucaoComponent},
   { path: 'geracaoRenda', component: GeracaoRendaComponent},
+  { path: 'formulario', component: FormularioComponent},
+  { path: 'MultiStepFormComponent', component: MultiStepFormComponent},
+  { path: 'FormatTitlePipe', component: FormatTitlePipe},
+  
   // Rotas da Rede Economica,
   { path: 'apoiador', component: ApoaidorComponent},
   { path: 'tipoRede', component: TipoRedeComponent},
@@ -91,6 +98,10 @@ const routes: Routes = [
     OpcaoQuestaoComponent,
     EvolucaoComponent,
     GeracaoRendaComponent, 
+
+    FormatTitlePipe,
+    MultiStepFormComponent,
+    FormularioComponent, 
     // Rede Economica
     TipoRedeComponent,
     ApoaidorComponent,
