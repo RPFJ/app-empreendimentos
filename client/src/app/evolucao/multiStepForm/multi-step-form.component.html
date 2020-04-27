@@ -44,7 +44,7 @@
 
               <ng-container *ngSwitchCase="'select'">
                 <select class="form-control" [formControlName]="field" [id]="field">
-                  <option value="">Select your Country</option>
+                  <option value="">{{currentFormContent[i][field].placeholder}}</option>
                   <option
                     *ngFor="let option of currentFormContent[i][field].options; trackBy: trackByFn"
                     [value]="option.name"

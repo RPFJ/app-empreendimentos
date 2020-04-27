@@ -33,26 +33,26 @@ export class MultiStepFormComponent implements OnInit {
     this.currentFormContent = [];
     this.formFields = [];
     this.stepItems = this.formContent;
-    let record = this.record; 
-    console.log("stepItems: ", this.stepItems); 
+    // let record = this.record; 
+    // console.log("stepItems: ", this.stepItems); 
 
-    _.forEach(this.stepItems, function(element ){
-      let valor = _.find(element.data, ['type', 'select']).then( (result) => {
+    // _.forEach(this.stepItems, function(element ){
+    //   let valor = _.find(element.data, ['type', 'select']).then( (result) => {
         
-      });
-      console.log('valor: ', valor);
+    //   });
+    //   console.log('valor: ', valor);
       
-      record.findAll(valor.options[0].name).subscribe(
-        valores => { 
-          console.log('valores: ', valores);
-          valor.push({"name": valores.nome});
-        },
-        err => {
-            console.error('EvolucaoComponent.ts: ', err); 
-        }
-    ); 
+    //   record.findAll(valor.options[0].name).subscribe(
+    //     valores => { 
+    //       console.log('valores: ', valores);
+    //       valor.push({"name": valores.nome});
+    //     },
+    //     err => {
+    //         console.error('EvolucaoComponent.ts: ', err); 
+    //     }
+    // ); 
       
-    })
+    // })
 
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {

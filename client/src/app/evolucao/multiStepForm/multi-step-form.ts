@@ -1,6 +1,6 @@
 
 const COUNTRY_LIST = [
-  { name: 'empreendimento' },
+  { name: 'Empreendimento', code: 'us' },
   { name: 'United Kingdoms', code: 'gb' },
   { name: 'India', code: 'in' }
 ];
@@ -11,21 +11,21 @@ const DATA_STEP_1 = {
     options: COUNTRY_LIST,
     validations: {},
     errors: {},
-    placeholder: 'Country'
+    placeholder: 'selecione um empreendimento'
   },
   redeEconômica: {
     type: 'select',
     options: COUNTRY_LIST,
     validations: {},
     errors: {},
-    placeholder: 'Country'
+    placeholder: 'selecione uma rede'
   },
   geraçãoDeRenda: {
     type: 'select',
     options: COUNTRY_LIST,
     validations: {},
     errors: {},
-    placeholder: 'Country'
+    placeholder: 'selecione um valor'
   },
   computador: {
     type: 'radio',
@@ -34,8 +34,7 @@ const DATA_STEP_1 = {
       { id:'pc2', name: 'computador', value: '1', descricao: "Possui computadores no local" }
     ],
     validations: {},
-    errors: {},
-    placeholder: 'Country'
+    errors: {}
   },
   númeroHomens: {
     type: 'number',
@@ -46,10 +45,10 @@ const DATA_STEP_1 = {
     min: "0",
     value: "0", 
     errors: {
-      required: 'This field can not be left blank',
-      minlength: 'Minimum length should be 4 characters'
+      required: 'Esse campo não pode ser nulo',
+      minlength: 'Mínimo de 1 caracter'
     },
-    placeholder: 'One Time Password'
+    placeholder: 'Número de Homens'
   },
   númeroMulheres: {
     type: 'number',
@@ -60,21 +59,21 @@ const DATA_STEP_1 = {
     min: "0",
     value: "0", 
     errors: {
-      required: 'This field can not be left blank',
-      minlength: 'Minimum length should be 4 characters'
+      required: 'Esse campo não pode ser nulo',
+      minlength: 'Mínimo de 1 caracter'
     },
-    placeholder: 'One Time Password'
+    placeholder: 'Número de Mulheres'
   }
 };
 
 const DATA_STEP_2 = {
-  address: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Full Address' },
+  questão1: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Questão 1 vai aqui' },
   country: {
     type: 'select',
     options: COUNTRY_LIST,
     validations: {},
     errors: {},
-    placeholder: 'Country'
+    placeholder: 'Primeira Questão'
   }
 };
 
@@ -85,9 +84,9 @@ const DATA_STEP_3 = {
       pattern: /\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}/
     },
     errors: {
-      pattern: 'Please enter a valid phone number'
+      pattern: 'Por favor, insira um número válido'
     },
-    placeholder: 'Contact Number'
+    placeholder: 'Número de Contato'
   },
   otp: {
     type: 'number',
@@ -96,7 +95,7 @@ const DATA_STEP_3 = {
       minLength: 4
     },
     errors: {
-      required: 'This field can not be left blank',
+      required: 'Esse campo não pode ser nulo',
       minlength: 'Minimum length should be 4 characters'
     },
     placeholder: 'One Time Password'
@@ -105,7 +104,7 @@ const DATA_STEP_3 = {
 
 const STEP_ITEMS = [
   { label: 'Relatório de Evolução', data: DATA_STEP_1 },
-  { label: 'Step 2', data: DATA_STEP_2 },
+  { label: 'Questão 1', data: DATA_STEP_2 },
   { label: 'Step 3', data: DATA_STEP_3 },
   { label: 'Review & Submit', data: {} }
 ];
