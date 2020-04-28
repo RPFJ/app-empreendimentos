@@ -21,8 +21,8 @@ export class RedeEconomicaComponent {
     dadosApoiadores= []; 
 
 
-    get desc_rede(){
-        return this.registrationForm.get('desc_rede'); 
+    get descricao(){
+        return this.registrationForm.get('descricao'); 
     }
     get latitude(){
         return this.registrationForm.get('latitude'); 
@@ -110,7 +110,7 @@ export class RedeEconomicaComponent {
     ngOnInit(){
         this.getInfo(this.components); 
         this.registrationForm = this.fb.group({
-            desc_rede: "", 
+            descricao: "", 
             latitude: 0, 
             longitude: 0, 
             id_tipo_rede: 0, 

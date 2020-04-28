@@ -8,21 +8,21 @@ const COUNTRY_LIST = [
 const DATA_STEP_1 = {
   empreendimento: {
     type: 'select',
-    options: COUNTRY_LIST,
+    options: 0,
     validations: {},
     errors: {},
     placeholder: 'selecione um empreendimento'
   },
   redeEconômica: {
     type: 'select',
-    options: COUNTRY_LIST,
+    options: 1,
     validations: {},
     errors: {},
     placeholder: 'selecione uma rede'
   },
   geraçãoDeRenda: {
     type: 'select',
-    options: COUNTRY_LIST,
+    options: 2,
     validations: {},
     errors: {},
     placeholder: 'selecione um valor'
@@ -104,8 +104,8 @@ const DATA_STEP_3 = {
 
 const STEP_ITEMS = [
   { label: 'Relatório de Evolução', data: DATA_STEP_1 },
-  { label: 'Questão 1', data: DATA_STEP_2 },
-  { label: 'Step 3', data: DATA_STEP_3 },
+  // { label: 'Questão 1', data: DATA_STEP_2 },
+  // { label: 'Step 3', data: DATA_STEP_3 },
   { label: 'Review & Submit', data: {} }
 ];
 

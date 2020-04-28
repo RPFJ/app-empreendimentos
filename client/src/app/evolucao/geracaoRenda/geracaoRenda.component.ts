@@ -8,7 +8,7 @@ import { Router } from "@angular/router";
 export class GeracaoRendaComponent {
     registro = {
         idGeracao_Renda : 0,
-        desc_renda: ""
+        descricao: ""
     }
 
     constructor(private record: RequestService, private router: Router) {}

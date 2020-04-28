@@ -46,9 +46,9 @@
                 <select class="form-control" [formControlName]="field" [id]="field">
                   <option value="">{{currentFormContent[i][field].placeholder}}</option>
                   <option
-                    *ngFor="let option of currentFormContent[i][field].options; trackBy: trackByFn"
-                    [value]="option.name"
-                    >{{ option.name }}</option>
+                    *ngFor="let option of selects[currentFormContent[i][field].options]; trackBy: trackByFn"
+                    [value]="option.descricao"
+                    >{{ option.descricao }}</option>
                 </select>
               </ng-container>
 

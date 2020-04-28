@@ -9,7 +9,7 @@ import * as _ from 'lodash';
   })
 export class EmpreendimentoComponent {
     registro = {
-        nome: "", 
+        descricao: "", 
         endereco: "", 
         cidade: "", 
         latitude: 0, 
@@ -28,8 +28,8 @@ export class EmpreendimentoComponent {
     selects = []; 
 
 
-    get nome(){
-        return this.registrationForm.get('nome'); 
+    get descricao(){
+        return this.registrationForm.get('descricao'); 
     }
     get endereco(){
         return this.registrationForm.get('endereco'); 
@@ -132,7 +132,7 @@ export class EmpreendimentoComponent {
         this.getInfo(this.components); 
         console.log('selects: ', this.selects)
         this.registrationForm = this.fb.group({
-            nome: "", 
+            descricao: "", 
             endereco: "", 
             cidade: "", 
             latitude: 0, 

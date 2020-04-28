@@ -16,9 +16,13 @@ export class RequestService {
     return this.http.post('/'+ _path + '/register' , data); 
   }
 
-  public findAll(path):  Observable<any> {
+  public findAll(path, headers=null):  Observable<any> {
     let _path = path;
-    return this.http.get('/'+ _path + '/list')
+    if(headers){
+      this.http.get('/'+ _path + '/list', headers )
+    }else{
+      return this.http.get('/'+ _path + '/list')
+    }
   }
 
 }

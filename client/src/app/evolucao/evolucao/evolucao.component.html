@@ -15,7 +15,7 @@
             <label for="selectRedeEconomica">Rede Economica</label>
             <select  class="form-control" placeholder="Rede Economica" name ="selectRedeEconomica" id="selectRedeEconomica"[(ngModel)]="registro.id_rede_economica">
               <option *ngFor="let redeEconomica of selects[1]"  [value]="redeEconomica.idRede_economica">
-                {{redeEconomica.desc_rede}}
+                {{redeEconomica.descricao}}
               </option>
             </select> 
           </div>
@@ -23,7 +23,7 @@
             <label for="selectGeracaoRenda">Geração de renda</label>
             <select  class="form-control" placeholder="Geração de Renda" name ="selectGeracaoRenda" id="selectGeracaoRenda"[(ngModel)]="registro.id_geracao_renda">
               <option *ngFor="let geracaoRenda of selects[2]"  [value]="geracaoRenda.idGeracao_renda">
-                {{geracaoRenda.desc_renda}}
+                {{geracaoRenda.descricao}}
               </option>
             </select> 
           </div>

@@ -9,7 +9,7 @@ module.exports = db.sequelize.define(
             primaryKey: true,
             autoIncrement: true
         },
-        desc_rede: {
+        descricao: {
             type: Sequelize.STRING
         },
         latitude: {

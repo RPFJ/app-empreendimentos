@@ -21,38 +21,21 @@ export class MultiStepFormComponent implements OnInit {
   masterFormFields: Array<string>;
   stepItems: Array<any>;
   masterForm: Array<FormGroup>;
+  components = ['empreendimento', 'redeEconomica','geracaoRenda'];
+  selects = []; 
+  questoes = [];
 
   constructor(private readonly _formBuilder: FormBuilder, private record: RequestService, private router: Router
   ) {}
 
   ngOnInit() {
     // TODO: add interfaces and enums wherever appropriate
-
+    this.getInfo(); 
     this.activeStepIndex = 0;
     this.masterForm = [];
     this.currentFormContent = [];
     this.formFields = [];
     this.stepItems = this.formContent;
-    // let record = this.record; 
-    // console.log("stepItems: ", this.stepItems); 
-
-    // _.forEach(this.stepItems, function(element ){
-    //   let valor = _.find(element.data, ['type', 'select']).then( (result) => {
-        
-    //   });
-    //   console.log('valor: ', valor);
-      
-    //   record.findAll(valor.options[0].name).subscribe(
-    //     valores => { 
-    //       console.log('valores: ', valores);
-    //       valor.push({"name": valores.nome});
-    //     },
-    //     err => {
-    //         console.error('EvolucaoComponent.ts: ', err); 
-    //     }
-    // ); 
-      
-    // })
 
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {
@@ -67,6 +50,92 @@ export class MultiStepFormComponent implements OnInit {
 
     });
   }
+
+   getInfo (){
+    let record = this.record; 
+    let selects = this.selects;
+    let components = this.components; 
+
+     _.forEach(components, function(element) {
+        record.findAll(element).subscribe(
+            valores => { 
+                selects.push(valores);
+            },
+            err => {
+                console.error('EvolucaoComponent.ts: ', err); 
+            }
+        ); 
+    });
+    this.getQuestao('questao'); 
+  };
+    
+  getQuestao(questao){
+    this.record.findAll(questao).subscribe(
+      resultados => { 
+        this.getAlternativas(resultados); 
+      },
+      err => {
+          console.error('EvolucaoComponent.ts: ', err); 
+      }
+    );
+  }
+
+  getAlternativas (resultados){
+    let record = this.record;
+    let questoes = this.questoes;
+    let $this = this
+    _.forEach(resultados, function(element) {
+      record.findAll('opcaoQuestao', element.id_questao).subscribe(
+        result => { 
+          element.options = result;
+          questoes.push(element); 
+          $this.buildQuestoes(); 
+        }); 
+    });
+    
+  } 
+
+  buildQuestoes(){
+    let stepItems = this.stepItems
+    let questoes = this.questoes;
+    let formItem = [];
+
+    let newQuestion; 
+    let newAnswer = []; 
+    _.forEach( questoes, function(element) {
+      console.log('questao1: ', element); 
+      newQuestion = [];
+      newQuestion.push(
+        { questao:{ type: 'textarea', validations: {}, errors: {}, placeholder: element.desc_questao}}
+      ); 
+      _.forEach( element.options, function(answer) {
+        newAnswer.push(
+           { alternativa: { type: 'textarea', validations: {}, errors: {}, placeholder: answer.desc_opcao}} 
+        );
+      });
+      
+      formItem.push(newAnswer) ;
+      console.log('newQuestion: ', newQuestion);
+      
+      
+      stepItems.push ( { label: element.desc_questao, data: newAnswer });
+
+      console.log('stepItems: ', stepItems);
+    }) 
+
+    // const DATA_STEP_2 = {
+    //   questão1: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Questão 1 vai aqui' },
+    //   country: {
+    //     type: 'select',
+    //     options: COUNTRY_LIST,
+    //     validations: {},
+    //     errors: {},
+    //     placeholder: 'Primeira Questão'
+    //   }
+    // };
+  }
+
+
 
   // build separate FormGroups for each form
   buildForm(currentFormContent: any): FormGroup {
