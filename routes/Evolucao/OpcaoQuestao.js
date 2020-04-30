@@ -18,8 +18,7 @@ opcaoQuestao.post('/register', (req, res) => {
 //Busca
 opcaoQuestao.get('/list', (req, res) => {
     const opcaoQuestaoDados = {
-        desc_opcao: req.body.desc_opcao,
-        id_questao: req.body.id_questao
+        id_questao: 1
     }
 
     OpcaoQuestao.findAll({

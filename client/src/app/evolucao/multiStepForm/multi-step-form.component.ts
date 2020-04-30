@@ -85,10 +85,13 @@ export class MultiStepFormComponent implements OnInit {
     let questoes = this.questoes;
     let $this = this
     _.forEach(resultados, function(element) {
-      record.findAll('opcaoQuestao', element.id_questao).subscribe(
+      element.id_questao = element.idQuestao
+      console.log('element: ', element);
+      record.findAll('opcaoQuestao', {id_questao: element.idQuestao }).subscribe(
         result => { 
           element.options = result;
           questoes.push(element); 
+          console.log('questoes', questoes);
           $this.buildQuestoes(); 
         }); 
     });
@@ -109,17 +112,13 @@ export class MultiStepFormComponent implements OnInit {
         { questao:{ type: 'textarea', validations: {}, errors: {}, placeholder: element.desc_questao}}
       ); 
       _.forEach( element.options, function(answer) {
-        newAnswer.push(
-           { alternativa: { type: 'textarea', validations: {}, errors: {}, placeholder: answer.desc_opcao}} 
-        );
+        // console.log('answer: ', answer);
+        newAnswer[answer.desc_opcao] = { type: 'textarea', validations: {}, errors: {}, placeholder: answer.desc_opcao};
       });
       
-      formItem.push(newAnswer) ;
-      console.log('newQuestion: ', newQuestion);
-      
-      
-      stepItems.push ( { label: element.desc_questao, data: newAnswer });
-
+      let data = newAnswer ;
+      stepItems.push ( { label: element.desc_questao, data });
+      stepItems.push( { label: 'Review & Submit', data: {} }); 
       console.log('stepItems: ', stepItems);
     }) 
 

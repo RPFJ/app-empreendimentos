@@ -98,17 +98,17 @@
             type="button" class="btn btn-info"
             [disabled]="!activeStepIndex"
             (click)="goToStep('prev')"
-          >Previous</button>
+          >Anterior</button>
           <button class="btn btn-success"
             *ngIf="activeStepIndex === stepItems.length - 1"
             type="button"
             (click)="onFormSubmit()"
-          >Submit</button>
+          >Submeter</button>
           <button class="btn btn-primary"
             type="button"
             [disabled]="activeStepIndex === stepItems.length - 1 || masterForm[i].invalid"
             (click)="goToStep('next')"
-          >Next</button>
+          >Próximo</button>
         
 
       </div>

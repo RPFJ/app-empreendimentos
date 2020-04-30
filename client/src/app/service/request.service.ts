@@ -18,8 +18,11 @@ export class RequestService {
 
   public findAll(path, headers=null):  Observable<any> {
     let _path = path;
+    console.log('headers: ', headers); 
     if(headers){
-      this.http.get('/'+ _path + '/list', headers )
+      return this.http.get('/'+ _path + '/list',{
+        headers: { headers }
+      })
     }else{
       return this.http.get('/'+ _path + '/list')
     }

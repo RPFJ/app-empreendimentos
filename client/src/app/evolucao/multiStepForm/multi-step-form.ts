@@ -68,13 +68,7 @@ const DATA_STEP_1 = {
 
 const DATA_STEP_2 = {
   questão1: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Questão 1 vai aqui' },
-  country: {
-    type: 'select',
-    options: COUNTRY_LIST,
-    validations: {},
-    errors: {},
-    placeholder: 'Primeira Questão'
-  }
+  a: { type: 'textarea', validations: {}, errors: {}, placeholder: 'a'}
 };
 
 const DATA_STEP_3 = {
@@ -104,9 +98,9 @@ const DATA_STEP_3 = {
 
 const STEP_ITEMS = [
   { label: 'Relatório de Evolução', data: DATA_STEP_1 },
-  // { label: 'Questão 1', data: DATA_STEP_2 },
+  { label: 'Questão 1', data: DATA_STEP_2 }
   // { label: 'Step 3', data: DATA_STEP_3 },
-  { label: 'Review & Submit', data: {} }
+  // { label: 'Review & Submit', data: {} }
 ];
 
 export { STEP_ITEMS }
