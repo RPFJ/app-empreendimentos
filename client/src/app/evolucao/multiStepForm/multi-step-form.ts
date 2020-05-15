@@ -36,6 +36,15 @@ const DATA_STEP_1 = {
     validations: {},
     errors: {}
   },
+  internet: {
+    type: 'radio',
+    options: [
+      { id:'net1', name: 'internet', value: '1', descricao: "Conexão com internet no local"},
+      { id:'net2', name: 'internet', value: '0', descricao: "Sem internet local" }
+    ],
+    validations: {},
+    errors: {}
+  },
   númeroHomens: {
     type: 'number',
     validations: {
@@ -97,8 +106,7 @@ const DATA_STEP_3 = {
 };
 
 const STEP_ITEMS = [
-  { label: 'Relatório de Evolução', data: DATA_STEP_1 },
-  { label: 'Questão 1', data: DATA_STEP_2 }
+  { label: 'Relatório de Evolução', data: DATA_STEP_1 }
   // { label: 'Step 3', data: DATA_STEP_3 },
   // { label: 'Review & Submit', data: {} }
 ];

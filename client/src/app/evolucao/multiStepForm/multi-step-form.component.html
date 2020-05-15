@@ -24,20 +24,24 @@
                 <textarea class="form-control"
                   [id]="field"
                   [formControlName]="field"
-                  [placeholder]="currentFormContent[i][field].placeholder"></textarea>
+                  [placeholder]="currentFormContent[i][field].placeholder">{{ field | formatTitle }}</textarea>
               </ng-container>
 
               <ng-container *ngSwitchCase="'radio'">
                 <div [id]="currentFormContent[i][field].id"
                   *ngFor="let option of currentFormContent[i][field].options;" class= 'form-group'>
 
-                  <div class="form-check form-check-inline" [id]="option.id">
-                    <input class="form-check-input" 
+                  <div class="form-check form-check-inline ">
+                    <label class="container" [for]="option.id">{{ option.descricao }}
+
+                    <input class="form-check-input container" 
                         type="radio" 
                         [formControlName]="option.name" 
                         [id]="option.id"
+                        [name]="option.name"
                         [value]="option.value">
-                    <label class="form-check-label" [for]="option.id">{{ option.descricao }}</label>
+                        <span class="checkmark"></span>
+                    </label>
                   </div>
                 </div>
               </ng-container>

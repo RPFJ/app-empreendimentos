@@ -25,18 +25,24 @@ export class MultiStepFormComponent implements OnInit {
   selects = []; 
   questoes = [];
 
-  constructor(private readonly _formBuilder: FormBuilder, private record: RequestService, private router: Router
-  ) {}
+  constructor(private readonly _formBuilder: FormBuilder, private record: RequestService, private router: Router) {}
 
   ngOnInit() {
     // TODO: add interfaces and enums wherever appropriate
     this.getInfo(); 
+    
     this.activeStepIndex = 0;
     this.masterForm = [];
     this.currentFormContent = [];
     this.formFields = [];
     this.stepItems = this.formContent;
+    console.log('o que tem aqui', this.stepItems); 
+    
+    //funcao build final foi removida daqui
+  }
 
+
+  buildFinal(){
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {
       // holds name, validators, placeholder of all steps
@@ -81,6 +87,7 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   getAlternativas (resultados){
+    
     let record = this.record;
     let questoes = this.questoes;
     let $this = this
@@ -91,8 +98,7 @@ export class MultiStepFormComponent implements OnInit {
         result => { 
           element.options = result;
           questoes.push(element); 
-          console.log('questoes', questoes);
-          $this.buildQuestoes(); 
+            $this.buildQuestoes(); 
         }); 
     });
     
@@ -102,38 +108,34 @@ export class MultiStepFormComponent implements OnInit {
     let stepItems = this.stepItems
     let questoes = this.questoes;
     let formItem = [];
+    let $this = this
 
-    let newQuestion; 
-    let newAnswer = []; 
+    let finalArray = []; 
+    let data = {}; 
     _.forEach( questoes, function(element) {
-      console.log('questao1: ', element); 
-      newQuestion = [];
-      newQuestion.push(
-        { questao:{ type: 'textarea', validations: {}, errors: {}, placeholder: element.desc_questao}}
-      ); 
+      console.log('element: ', element); 
+      // newQuestion.push(
+      //   { questao:{ type: 'textarea', validations: {}, errors: {}, placeholder: element.desc_questao}}
+      // ); 
       _.forEach( element.options, function(answer) {
         // console.log('answer: ', answer);
-        newAnswer[answer.desc_opcao] = { type: 'textarea', validations: {}, errors: {}, placeholder: answer.desc_opcao};
+        finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});
+        // console.log('finalArray: ', finalArray);
+        // formItem.push( { label: element.desc_questao, data: finalArray});
+        // console.log('formItem: ', formItem);
+        // stepItems.push( { label: element.desc_questao, data: finalArray});
       });
-      
-      let data = newAnswer ;
-      stepItems.push ( { label: element.desc_questao, data });
+      // let data = newAnswer ;
+      data[element.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
+      // console.log('data', data);
+      stepItems.push( { label: element.desc_questao, data: data});
       stepItems.push( { label: 'Review & Submit', data: {} }); 
-      console.log('stepItems: ', stepItems);
+      // console.log('stepItems: ', formItem);
+      console.log('Verdadeiro: ', stepItems);
+      // $this.finalFunc(formItem, stepItems);
     }) 
-
-    // const DATA_STEP_2 = {
-    //   questão1: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Questão 1 vai aqui' },
-    //   country: {
-    //     type: 'select',
-    //     options: COUNTRY_LIST,
-    //     validations: {},
-    //     errors: {},
-    //     placeholder: 'Primeira Questão'
-    //   }
-    // };
+    this.buildFinal(); 
   }
-
 
 
   // build separate FormGroups for each form
