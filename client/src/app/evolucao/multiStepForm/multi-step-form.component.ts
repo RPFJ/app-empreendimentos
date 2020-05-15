@@ -114,9 +114,6 @@ export class MultiStepFormComponent implements OnInit {
     let data = {}; 
     _.forEach( questoes, function(element) {
       console.log('element: ', element); 
-      // newQuestion.push(
-      //   { questao:{ type: 'textarea', validations: {}, errors: {}, placeholder: element.desc_questao}}
-      // ); 
       _.forEach( element.options, function(answer) {
         // console.log('answer: ', answer);
         finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});

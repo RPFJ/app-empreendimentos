@@ -107,8 +107,6 @@ const DATA_STEP_3 = {
 
 const STEP_ITEMS = [
   { label: 'Relatório de Evolução', data: DATA_STEP_1 }
-  // { label: 'Step 3', data: DATA_STEP_3 },
-  // { label: 'Review & Submit', data: {} }
 ];
 
 export { STEP_ITEMS }
