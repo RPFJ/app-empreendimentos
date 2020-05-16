@@ -36,8 +36,6 @@ export class MultiStepFormComponent implements OnInit {
     this.currentFormContent = [];
     this.formFields = [];
     this.stepItems = this.formContent;
-    console.log('o que tem aqui', this.stepItems); 
-    
     //funcao build final foi removida daqui
   }
 
@@ -78,7 +76,8 @@ export class MultiStepFormComponent implements OnInit {
   getQuestao(questao){
     this.record.findAll(questao).subscribe(
       resultados => { 
-        this.getAlternativas(resultados); 
+        console.log('resultados',resultados );
+        this.getAlternativas(resultados);
       },
       err => {
           console.error('EvolucaoComponent.ts: ', err); 
@@ -93,28 +92,51 @@ export class MultiStepFormComponent implements OnInit {
     let $this = this
     _.forEach(resultados, function(element) {
       element.id_questao = element.idQuestao
-      console.log('element: ', element);
+      console.log('Resultado: ', element);
       record.findAll('opcaoQuestao', {id_questao: element.idQuestao }).subscribe(
         result => { 
           element.options = result;
-          questoes.push(element); 
-            $this.buildQuestoes(); 
+          // questoes.push(element); 
+          $this.buildQuestoes(element); 
         }); 
     });
-    
   } 
 
-  buildQuestoes(){
+  buildQuestoes(questao){
     let stepItems = this.stepItems
     let questoes = this.questoes;
     let formItem = [];
     let $this = this
 
+    console.log('vai buildar com : ',questoes); 
+
     let finalArray = []; 
     let data = {}; 
-    _.forEach( questoes, function(element) {
-      console.log('element: ', element); 
-      _.forEach( element.options, function(answer) {
+    // _.forEach( questoes, function(element) {
+    //   console.log('element: ', element); 
+    //   _.forEach( element.options, function(answer) {
+    //     // console.log('answer: ', answer);
+    //     finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});
+    //     // console.log('finalArray: ', finalArray);
+    //     // formItem.push( { label: element.desc_questao, data: finalArray});
+    //     // console.log('formItem: ', formItem);
+    //     // stepItems.push( { label: element.desc_questao, data: finalArray});
+    //   });
+    //   // let data = newAnswer ;
+    //   data[element.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
+    //   // console.log('data', data);
+    //   stepItems.push( { label: element.desc_questao, data: data});
+      
+    //   // console.log('stepItems: ', formItem);
+    //   console.log('Verdadeiro: ', stepItems);
+    //   // $this.finalFunc(formItem, stepItems);
+    // }) 
+
+
+
+    // _.forEach( questoes, function(element) {
+    //   console.log('element: ', element); 
+      _.forEach( questao.options, function(answer) {
         // console.log('answer: ', answer);
         finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});
         // console.log('finalArray: ', finalArray);
@@ -123,14 +145,15 @@ export class MultiStepFormComponent implements OnInit {
         // stepItems.push( { label: element.desc_questao, data: finalArray});
       });
       // let data = newAnswer ;
-      data[element.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
+      data[questao.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
       // console.log('data', data);
-      stepItems.push( { label: element.desc_questao, data: data});
-      stepItems.push( { label: 'Review & Submit', data: {} }); 
+      stepItems.push( { label: questao.desc_questao, data: data});
+      
       // console.log('stepItems: ', formItem);
       console.log('Verdadeiro: ', stepItems);
       // $this.finalFunc(formItem, stepItems);
-    }) 
+    // }) 
+    // stepItems.push( { label: 'Review & Submit', data: {} }); 
     this.buildFinal(); 
   }
 
