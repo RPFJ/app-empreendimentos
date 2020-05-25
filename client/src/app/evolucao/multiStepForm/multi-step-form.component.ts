@@ -29,8 +29,19 @@ export class MultiStepFormComponent implements OnInit {
 
   ngOnInit() {
     // TODO: add interfaces and enums wherever appropriate
-    this.getInfo(); 
-    
+    this.getInfo().then( () => {
+      this.getQuestao('questao').then( result => {
+        this.getAlternativas(result).then(
+          questoes => {
+            this.buildQuestoes(questoes).then(
+              formItems => {
+                this.buildFinal(formItems); 
+              }
+            );
+          }
+        ); 
+      } );   
+    }); 
     this.activeStepIndex = 0;
     this.masterForm = [];
     this.currentFormContent = [];
@@ -40,7 +51,10 @@ export class MultiStepFormComponent implements OnInit {
   }
 
 
-  buildFinal(){
+  buildFinal(formItens){
+    this.stepItems = _.concat(this.stepItems, formItens);
+    this.stepItems.push( { label: 'Review & Submit', data: {} }); 
+
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {
       // holds name, validators, placeholder of all steps
@@ -55,106 +69,75 @@ export class MultiStepFormComponent implements OnInit {
     });
   }
 
-   getInfo (){
+  getInfo = ()  => new Promise((resolve, reject) => {
     let record = this.record; 
     let selects = this.selects;
     let components = this.components; 
-
-     _.forEach(components, function(element) {
+    _.forEach(components, function(element) {
         record.findAll(element).subscribe(
             valores => { 
+                // resolve(selects);
                 selects.push(valores);
             },
             err => {
+              reject(err); 
                 console.error('EvolucaoComponent.ts: ', err); 
             }
         ); 
     });
-    this.getQuestao('questao'); 
-  };
+    if(selects){
+      resolve(selects);
+    } else {
+      reject('erro'); 
+    }
+  });
     
-  getQuestao(questao){
+  getQuestao = (questao) => new Promise ((resolve, reject) => {
     this.record.findAll(questao).subscribe(
       resultados => { 
-        console.log('resultados',resultados );
-        this.getAlternativas(resultados);
+        resolve(resultados);
       },
       err => {
-          console.error('EvolucaoComponent.ts: ', err); 
+        reject(err); 
+        console.error('EvolucaoComponent.ts: ', err); 
       }
     );
-  }
+  }); 
 
-  getAlternativas (resultados){
-    
+  getAlternativas(resultados){
     let record = this.record;
     let questoes = this.questoes;
-    let $this = this
-    _.forEach(resultados, function(element) {
+
+    questoes = _.map(resultados, (element) => new Promise ((resolve, reject) => {
       element.id_questao = element.idQuestao
-      console.log('Resultado: ', element);
       record.findAll('opcaoQuestao', {id_questao: element.idQuestao }).subscribe(
         result => { 
           element.options = result;
-          // questoes.push(element); 
-          $this.buildQuestoes(element); 
+          resolve(element); 
         }); 
-    });
-  } 
-
-  buildQuestoes(questao){
-    let stepItems = this.stepItems
-    let questoes = this.questoes;
-    let formItem = [];
-    let $this = this
-
-    console.log('vai buildar com : ',questoes); 
-
+    })); 
+    return Promise.all(questoes); 
+  }
+    
+  buildQuestoes(questionsToBuild){
     let finalArray = []; 
     let data = {}; 
-    // _.forEach( questoes, function(element) {
-    //   console.log('element: ', element); 
-    //   _.forEach( element.options, function(answer) {
-    //     // console.log('answer: ', answer);
-    //     finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});
-    //     // console.log('finalArray: ', finalArray);
-    //     // formItem.push( { label: element.desc_questao, data: finalArray});
-    //     // console.log('formItem: ', formItem);
-    //     // stepItems.push( { label: element.desc_questao, data: finalArray});
-    //   });
-    //   // let data = newAnswer ;
-    //   data[element.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
-    //   // console.log('data', data);
-    //   stepItems.push( { label: element.desc_questao, data: data});
-      
-    //   // console.log('stepItems: ', formItem);
-    //   console.log('Verdadeiro: ', stepItems);
-    //   // $this.finalFunc(formItem, stepItems);
-    // }) 
+    let valorFinal; 
 
+    valorFinal = _.map(questionsToBuild, (element) => new Promise ((resolve, reject) => {
+        finalArray = _.map(element.options, (options) => new Promise ((resolve, reject) => {
+          resolve({id: options.idOpcao, name: options.id_questao, value: options.idOpcao, descricao: options.desc_opcao}); 
+        }))
+        Promise.all(finalArray).then( opcoes => {
+          if(opcoes[0].name == element.idQuestao ){
+            data = {};
+            data[element.idQuestao]= { type: 'radio', options: opcoes, validations:{}, errors: {}};
+            resolve({ label: element.desc_questao, data: data});
+          }
+        }); 
+    })); 
 
-
-    // _.forEach( questoes, function(element) {
-    //   console.log('element: ', element); 
-      _.forEach( questao.options, function(answer) {
-        // console.log('answer: ', answer);
-        finalArray.push( { id: answer.idOpcao, name: answer.id_questao, value: answer.idOpcao, descricao: answer.desc_opcao});
-        // console.log('finalArray: ', finalArray);
-        // formItem.push( { label: element.desc_questao, data: finalArray});
-        // console.log('formItem: ', formItem);
-        // stepItems.push( { label: element.desc_questao, data: finalArray});
-      });
-      // let data = newAnswer ;
-      data[questao.id_questao]= { type: 'radio', options: finalArray,         validations: {},errors: {}};
-      // console.log('data', data);
-      stepItems.push( { label: questao.desc_questao, data: data});
-      
-      // console.log('stepItems: ', formItem);
-      console.log('Verdadeiro: ', stepItems);
-      // $this.finalFunc(formItem, stepItems);
-    // }) 
-    // stepItems.push( { label: 'Review & Submit', data: {} }); 
-    this.buildFinal(); 
+    return Promise.all(valorFinal); 
   }
 
 
@@ -213,6 +196,7 @@ export class MultiStepFormComponent implements OnInit {
 
   onFormSubmit(): void {
     // emit aggregate form data to parent component, where we POST
+    console.log('Dados: ', this.formData);
     this.formSubmit.emit(this.formData);
   }
 
