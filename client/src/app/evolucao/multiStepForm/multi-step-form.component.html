@@ -51,7 +51,7 @@
                   <option value="">{{currentFormContent[i][field].placeholder}}</option>
                   <option
                     *ngFor="let option of selects[currentFormContent[i][field].options]; trackBy: trackByFn"
-                    [value]="option.descricao"
+                    [value]="option.value"
                     >{{ option.descricao }}</option>
                 </select>
               </ng-container>
@@ -107,7 +107,7 @@
             *ngIf="activeStepIndex === stepItems.length - 1"
             type="button"
             (click)="onFormSubmit()"
-          >Submeter</button>
+          >Enviar Relatório</button>
           <button class="btn btn-primary"
             type="button"
             [disabled]="activeStepIndex === stepItems.length - 1 || masterForm[i].invalid"

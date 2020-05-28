@@ -4,13 +4,13 @@ const db = require("../../database/db.js")
 module.exports = db.sequelize.define(
     'cdt_resposta',
     {
-        idReposta: {
+        idResposta: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        desc_respsota: {
-            type: Sequelize.STRING
+        id_opcao_questao: {
+            type: Sequelize.INTEGER
         },
         id_questao: {
             type: Sequelize.INTEGER

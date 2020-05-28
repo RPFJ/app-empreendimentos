@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { RequestService } from "../../service/request.service";
 import { Router } from "@angular/router";
+import { elementAt } from 'rxjs/operators';
 
 @Component({
   selector: 'app-multi-step-form',
@@ -21,17 +22,28 @@ export class MultiStepFormComponent implements OnInit {
   masterFormFields: Array<string>;
   stepItems: Array<any>;
   masterForm: Array<FormGroup>;
-  components = ['empreendimento', 'redeEconomica','geracaoRenda'];
+  components = [{table:'empreendimento', field: 'idEmpreendimento' }, {table:'redeEconomica', field: 'idRede_economica' }, {table:'geracaoRenda', field: 'idGeracao_renda' }];
   selects = []; 
-  questoes = [];
+  questions = [];
+  answers = []; 
+  evolucao = {
+    idEvolucao: 0,                   
+    id_geracao_renda: 0,                    
+    n_homens: 0,                     
+    n_mulheres: 0,
+    computador: 0, 
+    internet: 0,                   
+    id_empreendimento: 0,                   
+    id_rede_economica: 0,                    
+}
 
   constructor(private readonly _formBuilder: FormBuilder, private record: RequestService, private router: Router) {}
 
   ngOnInit() {
     // TODO: add interfaces and enums wherever appropriate
     this.getInfo().then( () => {
-      this.getQuestao('questao').then( result => {
-        this.getAlternativas(result).then(
+      this.getDataValues('questao').then( result => {
+        this.getQuestionOptions(result).then(
           questoes => {
             this.buildQuestoes(questoes).then(
               formItems => {
@@ -74,10 +86,13 @@ export class MultiStepFormComponent implements OnInit {
     let selects = this.selects;
     let components = this.components; 
     _.forEach(components, function(element) {
-        record.findAll(element).subscribe(
-            valores => { 
+        record.findAll(element.table).subscribe(
+            resultSet => { 
                 // resolve(selects);
-                selects.push(valores);
+                _.map(resultSet, (resultItem)  => {
+                  resultItem.value = resultItem[element.field]
+                });
+                selects.push(resultSet);
             },
             err => {
               reject(err); 
@@ -92,10 +107,10 @@ export class MultiStepFormComponent implements OnInit {
     }
   });
     
-  getQuestao = (questao) => new Promise ((resolve, reject) => {
-    this.record.findAll(questao).subscribe(
-      resultados => { 
-        resolve(resultados);
+  getDataValues = (table) => new Promise ((resolve, reject) => {
+    this.record.findAll(table).subscribe(
+      resultSet => { 
+        resolve(resultSet);
       },
       err => {
         reject(err); 
@@ -104,11 +119,11 @@ export class MultiStepFormComponent implements OnInit {
     );
   }); 
 
-  getAlternativas(resultados){
-    let record = this.record;
-    let questoes = this.questoes;
+  getQuestionOptions(emptyQuestions){
+    let record    = this.record;
+    let fullQuestions = this.questions;
 
-    questoes = _.map(resultados, (element) => new Promise ((resolve, reject) => {
+    fullQuestions = _.map(emptyQuestions, (element) => new Promise ((resolve, reject) => {
       element.id_questao = element.idQuestao
       record.findAll('opcaoQuestao', {id_questao: element.idQuestao }).subscribe(
         result => { 
@@ -116,16 +131,16 @@ export class MultiStepFormComponent implements OnInit {
           resolve(element); 
         }); 
     })); 
-    return Promise.all(questoes); 
+    return Promise.all(fullQuestions); 
   }
     
   buildQuestoes(questionsToBuild){
     let finalArray = []; 
     let data = {}; 
-    let valorFinal; 
+    let buildedQuestions; 
 
-    valorFinal = _.map(questionsToBuild, (element) => new Promise ((resolve, reject) => {
-        finalArray = _.map(element.options, (options) => new Promise ((resolve, reject) => {
+    buildedQuestions = _.map(questionsToBuild, (element) => new Promise ((resolve) => {
+        finalArray = _.map(element.options, (options) => new Promise ((resolve) => {
           resolve({id: options.idOpcao, name: options.id_questao, value: options.idOpcao, descricao: options.desc_opcao}); 
         }))
         Promise.all(finalArray).then( opcoes => {
@@ -137,8 +152,72 @@ export class MultiStepFormComponent implements OnInit {
         }); 
     })); 
 
-    return Promise.all(valorFinal); 
+    return Promise.all(buildedQuestions); 
   }
+  
+  setEvolucao(dataSet) {
+    this.evolucao = {
+      idEvolucao: 0,                   
+      id_geracao_renda: dataSet.geraçãoDeRenda,                     
+      n_homens: dataSet.númeroHomens,                     
+      n_mulheres: dataSet.númeroMulheres,
+      computador: dataSet.computador, 
+      internet: dataSet.internet,                   
+      id_empreendimento: dataSet.empreendimento,                   
+      id_rede_economica: dataSet.redeEconômica                    
+    }
+    return this.evolucao; 
+  }
+
+  async setAnswers(dataSet){
+    let questions = [];
+    let answers = [];
+    let answer = {
+      idReposta   : 0, 
+      id_questao  : 0,
+      id_evolucao : 0,
+      id_opcao_questao : 0
+    };
+
+    questions = [await this.getDataValues('questao')];
+
+    answers = _.forEach(questions[0], element => {
+      answer = {
+        idReposta: 0, 
+        id_questao:0,
+        id_evolucao:0,
+        id_opcao_questao : 0
+      };
+      answer.id_questao = element.idQuestao;
+      answer.id_evolucao = 0
+      answer.id_opcao_questao = dataSet[element.idQuestao];
+      this.answers.push(answer); 
+    })
+  }
+
+  prepareData(formResult){
+    let evolution = this.setEvolucao(formResult);
+    this.setAnswers(formResult); 
+    let answers = this.answers;
+    this.register(evolution, answers)
+  }
+
+  register(evolution, answers) {
+    this.record.register(evolution, 'evolucao' ).subscribe(
+      evolucao => {
+          answers.forEach( resposta => {
+            resposta.id_evolucao = evolucao.idEvolucao;
+              this.record.register(resposta, 'resposta' ).subscribe();
+          });
+          window.alert("Relatório de Evolução enviado com sucesso!!!"); 
+          this.router.navigateByUrl("/");
+      },
+      err => {
+          window.alert("Não foi possível cadastrar a Empreendimento!!!"); 
+          console.error(err);
+      }
+  );
+}
 
 
   // build separate FormGroups for each form
@@ -197,7 +276,8 @@ export class MultiStepFormComponent implements OnInit {
   onFormSubmit(): void {
     // emit aggregate form data to parent component, where we POST
     console.log('Dados: ', this.formData);
-    this.formSubmit.emit(this.formData);
+   // this.formSubmit.emit(this.formData);
+   this.prepareData(this.formData);
   }
 
   trackByFn(index: number): number {
