@@ -1,13 +1,13 @@
 <div class="wrapper">
-<nav id="sidebar"> 
+<nav id="sidebar" *ngIf="auth.isLoggedIn()"> 
   <div class="sidebar-header">
-    <img id="recicle_img" src="../assets/img/recicle_img.png"  >
-    <h3>Observatório</h3>
+    <img id="recicle_img" src="../assets/img/sunflower_img.png"  >
+    <h4>Observatório</h4>
     <b>Economia Solidária</b>
   </div>
     <ul class="list-unstyled components">
           <li class="active">
-            <a routerLink="/">
+            <a routerLink="/home">
               <i class="fas fa-home"></i>
               Home
           </a>
@@ -108,7 +108,7 @@
         </a>
         <ul class="collapse list-unstyled" id="reportSubMenu">
             <li>
-              <a href="#">Evolução</a>
+              <a  routerLink="/formulario">Evolução</a>
             </li>
             <li>
                 <a href="#">Desenvolvimento Local</a>
@@ -135,20 +135,26 @@
       <div id="content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span> Esconder Menu</span>
+              <div *ngIf="auth.isLoggedIn()">
+                <button type="button"  class="btn btn-info"  id="sidebarCollapse">
+                  <i class="fas fa-align-left"></i>
+                  <span>Esconder Menu</span>
                 </button>
+              </div>
+                
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Página Inicial</a>
+                            <a class="nav-link" routerLink="/home" *ngIf="auth.isLoggedIn()">Página Inicial</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Evolução</a>
+                        <li class="nav-item" *ngIf="auth.isLoggedIn()">
+                            <a class="nav-link"routerLink="/formulario">Evolução</a>
+                        </li>
+                        <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+                          <a class="nav-link" routerLink="/register">Cadastro de Usuário</a>
                         </li>
                         <li *ngIf="auth.isLoggedIn()" >
                           <a class="nav-link" routerLink="/profile">{{ auth.getUsuarioDetails()?.nome}}</a>

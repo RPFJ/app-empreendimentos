@@ -95,6 +95,6 @@ export class AuthenticationService {
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usuariotoken')
-    this.router.navigateByUrl('/')
+    this.router.navigateByUrl('/login')
   }
 }

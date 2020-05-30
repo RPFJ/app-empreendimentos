@@ -1,8 +1,11 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8 mt-5 mx-auto">
+        <div class="col-md-5 mt-5 mx-auto">
+            <img id="sunflower_logo" src="../assets/img/sunflower_img.png"  >
+            <h3 style="text-align: center;">Observatório de Economia Solidária</h3>
+        <br>
             <form (submit)="login()">
-                <h1 class="h3 mb-3 font-weight-normal">Por favor, faça login</h1>
+                <h6 class="h6 mb-3 font-weight-bold">Entre com suas credenciais para acessar:</h6>
                 <div class="form-group">
                     <label for="email">Endereço de E-mail</label>
                     <input type="email" class="form-control" name="email" placeholder="Coloque seu E-mail"
@@ -13,7 +16,7 @@
                     <input type="password" class="form-control" name="senha" placeholder="Senha"
                     [(ngModel)] = "credentials.senha">
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+                <button class="btn btn-lg btn-info btn-block" type="submit">Acessar Observatório</button>
             </form>
         </div>
     </div>

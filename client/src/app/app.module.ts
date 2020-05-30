@@ -44,9 +44,14 @@ import { FormatTitlePipe } from './pipes/format-title.pipe'
 
 const routes: Routes = [
   // rotas do login
-  { path: '', component: HomeComponent },
+  { path: 'home', 
+    component: HomeComponent,
+    canActivate: [AuthGuardService]
+  },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
+
   {
    path: 'profile',
     component: ProfileComponent,
