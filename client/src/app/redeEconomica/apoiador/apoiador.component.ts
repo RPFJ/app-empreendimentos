@@ -15,6 +15,7 @@ export class ApoaidorComponent {
 
     constructor(private record: RequestService, private router: Router) {}
 
+    //Função responsável por cadastrar os apoiadores
     register(){
         this.record.register(this.registro, 'apoiador').subscribe(
             () => {

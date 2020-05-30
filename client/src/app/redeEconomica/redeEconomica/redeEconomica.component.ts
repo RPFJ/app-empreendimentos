@@ -38,6 +38,7 @@ export class RedeEconomicaComponent {
         return this.registrationForm.get('apoiadores') as FormArray
     }
 
+    // Adiciona um novo apoiador ao formulário
     newApoiador(): FormGroup {
         return this.fb.group({
           nome: '',
@@ -45,6 +46,7 @@ export class RedeEconomicaComponent {
         })
     }
 
+     // Adiciona um novo apoiador ao array de apoiador do formulário
     addApoiador() {
         this.apoiadores().push(this.newApoiador());
     }
@@ -57,6 +59,7 @@ export class RedeEconomicaComponent {
     constructor(private record: RequestService, private router: Router,private fb: FormBuilder) { 
     }
 
+    // Busca as informações necessárias para os campos de listagem
     getInfo (components){
         let record = this.record; 
         let selects = this.selects; 
@@ -72,7 +75,7 @@ export class RedeEconomicaComponent {
         }); 
     }; 
 
-
+    // Estrutura as informações e salva no banco de dados
     register(dados){
         let redeApoiadores = dados.apoiadores;
         var redeApoiador = {
@@ -80,6 +83,7 @@ export class RedeEconomicaComponent {
             id_apoiador: 0
         };
 
+        // Apaga o item apoiadores do objeto dados
         delete dados.apoiadores
 
         this.record.register(dados, 'redeEconomica' ).subscribe(
@@ -87,15 +91,7 @@ export class RedeEconomicaComponent {
                 redeApoiadores.forEach( element => {
                     redeApoiador.id_apoiador = element.idApoiador;
                     redeApoiador.id_rede_economica = redeEconomica.idRede_produtiva;
-                    this.record.register(redeApoiador, 'redeApoiador' ).subscribe(
-                        redeApoiador => {   
-                            console.log('cadastro executado'); 
-                        }, 
-                        err => {
-                            window.alert("Não foi possível cadastrar a Rede Economica !!!"); 
-                            console.error(err);
-                        }
-                    );
+                    this.record.register(redeApoiador, 'redeApoiador' ).subscribe(); 
                 });
                 window.alert("Rede Economica cadastrada com sucesso!!!"); 
                 this.router.navigateByUrl("/");
@@ -107,6 +103,7 @@ export class RedeEconomicaComponent {
         );
     }
 
+    // Inicialização do formulário buscando todos os dados necessários para o funcionamento
     ngOnInit(){
         this.getInfo(this.components); 
         this.registrationForm = this.fb.group({
@@ -118,6 +115,7 @@ export class RedeEconomicaComponent {
         });
     }
 
+    // Ao clicar no botão "Enviar" chama função para 
     onSubmit() {
         this.register(this.registrationForm.value); 
     }

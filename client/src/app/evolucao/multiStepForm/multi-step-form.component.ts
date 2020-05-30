@@ -15,6 +15,7 @@ export class MultiStepFormComponent implements OnInit {
 
   @Output() readonly formSubmit: EventEmitter<any> = new EventEmitter<any>();
 
+  // Definição incial das variáveis de controle para montar o formulário multi-step
   activeStepIndex: number;
   currentFormContent: Array<any>;
   formData: any;
@@ -39,15 +40,17 @@ export class MultiStepFormComponent implements OnInit {
 
   constructor(private readonly _formBuilder: FormBuilder, private record: RequestService, private router: Router) {}
 
+  // Função de inicialização
+  // Cria todos os arrays necessários e busca as informações para inciar o formulário multi-step
   ngOnInit() {
-    // TODO: add interfaces and enums wherever appropriate
+    // Busca todas as informações necesárias para a construção do formulário
     this.getInfo().then( () => {
       this.getDataValues('questao').then( result => {
         this.getQuestionOptions(result).then(
           questoes => {
             this.buildQuestoes(questoes).then(
               formItems => {
-                this.buildFinal(formItems); 
+                this.buildFormItems(formItems); 
               }
             );
           }
@@ -59,13 +62,12 @@ export class MultiStepFormComponent implements OnInit {
     this.currentFormContent = [];
     this.formFields = [];
     this.stepItems = this.formContent;
-    //funcao build final foi removida daqui
   }
 
-
-  buildFinal(formItens){
-    this.stepItems = _.concat(this.stepItems, formItens);
-    this.stepItems.push( { label: 'Review & Submit', data: {} }); 
+  // Recebe as informações da bunsca no banco de dados e adiciona aos dados do Array STEP_ITEMS 
+  buildFormItems(formItems){
+    this.stepItems = _.concat(this.stepItems, formItems);
+    this.stepItems.push( { label: 'Revisão e Confirmação de Envio', data: {} }); 
 
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {
@@ -81,6 +83,7 @@ export class MultiStepFormComponent implements OnInit {
     });
   }
 
+  // Busca informações necessárias para a listagem de dados de outras tabelas
   getInfo = ()  => new Promise((resolve, reject) => {
     let record = this.record; 
     let selects = this.selects;
@@ -88,7 +91,6 @@ export class MultiStepFormComponent implements OnInit {
     _.forEach(components, function(element) {
         record.findAll(element.table).subscribe(
             resultSet => { 
-                // resolve(selects);
                 _.map(resultSet, (resultItem)  => {
                   resultItem.value = resultItem[element.field]
                 });
@@ -96,7 +98,6 @@ export class MultiStepFormComponent implements OnInit {
             },
             err => {
               reject(err); 
-                console.error('EvolucaoComponent.ts: ', err); 
             }
         ); 
     });
@@ -106,7 +107,8 @@ export class MultiStepFormComponent implements OnInit {
       reject('erro'); 
     }
   });
-    
+  
+  // Busca informações do banco de dados de acordo com a tabela e retorna o objeto
   getDataValues = (table) => new Promise ((resolve, reject) => {
     this.record.findAll(table).subscribe(
       resultSet => { 
@@ -119,6 +121,7 @@ export class MultiStepFormComponent implements OnInit {
     );
   }); 
 
+  // Adiciona alternativas às questões recebidas como parâmetro
   getQuestionOptions(emptyQuestions){
     let record    = this.record;
     let fullQuestions = this.questions;
@@ -133,7 +136,9 @@ export class MultiStepFormComponent implements OnInit {
     })); 
     return Promise.all(fullQuestions); 
   }
-    
+  
+  // Construção e definição das respostas de cada uma das questões
+  // Logo após, adiciona os dados à estrutura do formulário 
   buildQuestoes(questionsToBuild){
     let finalArray = []; 
     let data = {}; 
@@ -146,7 +151,7 @@ export class MultiStepFormComponent implements OnInit {
         Promise.all(finalArray).then( opcoes => {
           if(opcoes[0].name == element.idQuestao ){
             data = {};
-            data[element.idQuestao]= { type: 'radio', options: opcoes, validations:{}, errors: {}};
+            data[element.idQuestao]= { type: 'radio', options: opcoes, validations:{  required: true}, errors: {required: 'Esse campo não pode ser nulo'}};
             resolve({ label: element.desc_questao, data: data});
           }
         }); 
@@ -155,6 +160,7 @@ export class MultiStepFormComponent implements OnInit {
     return Promise.all(buildedQuestions); 
   }
   
+  // Contrução do objeto de evolução para salvar no banco de dados
   setEvolucao(dataSet) {
     this.evolucao = {
       idEvolucao: 0,                   
@@ -169,6 +175,7 @@ export class MultiStepFormComponent implements OnInit {
     return this.evolucao; 
   }
 
+  // Construção dos objetos de cada uma das respostas para salvar no banco de dados
   async setAnswers(dataSet){
     let questions = [];
     let answers = [];
@@ -195,6 +202,7 @@ export class MultiStepFormComponent implements OnInit {
     })
   }
 
+  // Estruturação dos dados do formulário para efetuar o cadastro
   prepareData(formResult){
     let evolution = this.setEvolucao(formResult);
     this.setAnswers(formResult); 
@@ -202,6 +210,7 @@ export class MultiStepFormComponent implements OnInit {
     this.register(evolution, answers)
   }
 
+  // Cadastro de Evolução e suas respostas.
   register(evolution, answers) {
     this.record.register(evolution, 'evolucao' ).subscribe(
       evolucao => {
@@ -218,7 +227,6 @@ export class MultiStepFormComponent implements OnInit {
       }
   );
 }
-
 
   // build separate FormGroups for each form
   buildForm(currentFormContent: any): FormGroup {
@@ -257,6 +265,7 @@ export class MultiStepFormComponent implements OnInit {
     return validationError;
   }
 
+  // Troca de etapa do formulário
   goToStep(step: string): void {
     this.activeStepIndex =
       step === 'prev' ? this.activeStepIndex - 1 : this.activeStepIndex + 1;
@@ -264,6 +273,7 @@ export class MultiStepFormComponent implements OnInit {
     this.setFormPreview();
   }
 
+  // Define a tela de revisão do formulário
   setFormPreview(): void {
     this.formData = this.masterForm.reduce(
       (masterForm, currentForm) => ({ ...masterForm, ...currentForm.value }),
@@ -274,9 +284,7 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   onFormSubmit(): void {
-    // emit aggregate form data to parent component, where we POST
-    console.log('Dados: ', this.formData);
-   // this.formSubmit.emit(this.formData);
+    // console.log('Dados: ', this.formData);
    this.prepareData(this.formData);
   }
 

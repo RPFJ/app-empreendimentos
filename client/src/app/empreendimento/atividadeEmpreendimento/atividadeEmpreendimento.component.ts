@@ -14,7 +14,7 @@ export class AtividadeEmpreendimentoComponent {
 
     constructor(private record: RequestService, private router: Router) {}
 
-    atividadeEmpreendimento(){
+    register(){
         this.record.register(this.registro, 'atividadeEmpreendimento' ).subscribe(
             () => {
                 window.alert("Atividade cadastrada com sucesso!!!"); 

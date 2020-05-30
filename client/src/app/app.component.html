@@ -36,9 +36,6 @@
             <li>
               <a routerLink="/tipoOrganizacao">Tipo de Organização</a>
             </li>
-            <!-- <li>
-                <a routerLink="/contato">Contato</a>
-            </li> -->
             <li>
                 <a routerLink="/tipoContato">Tipo de Contato</a>
             </li>
@@ -61,37 +58,14 @@
             </li>
         </ul>
       </li>
-      <!-- <li>
-        <a  href="#docs" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-          <i class="fas fa-file"></i>
-          Documentação
-        </a>
-        <ul class="collapse list-unstyled" id="docs">
-            <li>
-                <a routerLink="#">Cadastrar Documentação</a>
-            </li>
-            <li>
-              <a routerLink="#">Legislação</a>
-            </li>
-            <li>
-              <a  routerLink="#">Editais</a>
-            </li>
-            <li>
-              <a  routerLink="#">Economia Solidária - IFSP BRI</a>
-            </li>
-        </ul>
-      </li> -->
       <li>
         <a  href="#evolSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
           <i class="fas fa-chart-line"></i>
           Evolução
         </a>
         <ul class="collapse list-unstyled" id="evolSubMenu">
-            <!-- <li>
-              <a  routerLink="/evolucao">Evolução</a>
-            </li> -->
             <li>
-              <a  routerLink="/formulario">Rel. de Evolução</a>
+              <a  routerLink="/evolucao">Rel. de Evolução</a>
             </li>
             <li>
                 <a  routerLink="/questao">Questões</a>
@@ -108,7 +82,7 @@
         </a>
         <ul class="collapse list-unstyled" id="reportSubMenu">
             <li>
-              <a  routerLink="/formulario">Evolução</a>
+              <a  routerLink="/evolucao">Evolução</a>
             </li>
             <li>
                 <a href="#">Desenvolvimento Local</a>
@@ -151,7 +125,7 @@
                             <a class="nav-link" routerLink="/home" *ngIf="auth.isLoggedIn()">Página Inicial</a>
                         </li>
                         <li class="nav-item" *ngIf="auth.isLoggedIn()">
-                            <a class="nav-link"routerLink="/formulario">Evolução</a>
+                            <a class="nav-link"routerLink="/evolucao">Evolução</a>
                         </li>
                         <li class="nav-item" *ngIf="!auth.isLoggedIn()">
                           <a class="nav-link" routerLink="/register">Cadastro de Usuário</a>

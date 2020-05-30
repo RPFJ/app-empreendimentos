@@ -13,8 +13,8 @@ export class LocalizacaoComponent {
         
 
     constructor(private record: RequestService, private router: Router) {}
-
-    localizacao(){
+    //Função responsável por cadastrar o conteúdo do formulário
+    register(){
         this.record.register(this.registro, 'localizacao' ).subscribe(
             () => {
                 window.alert("Localizacao cadastrado com sucesso!!!"); 

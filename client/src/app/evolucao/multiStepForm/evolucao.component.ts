@@ -4,9 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { STEP_ITEMS } from './multi-step-form';
 
 @Component({
-  templateUrl: './formulario.component.html'
+  templateUrl: './evolucao.component.html'
 })
-export class FormularioComponent implements OnInit  {
+export class EvolucaoComponent implements OnInit  {
   formContent: any;
   formData: any;
   activeStepIndex: number;

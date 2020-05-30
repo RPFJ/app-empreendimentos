@@ -14,7 +14,8 @@ export class AreaAtuacaoComponent {
 
     constructor(private record: RequestService, private router: Router) {}
 
-    areaAtuacao(){
+    //Função responsável por cadastrar o conteúdo do formulário
+    register(){
         this.record.register(this.registro, 'areaAtuacao' ).subscribe(
             () => {
                 window.alert("Area de Atuação cadastrada com sucesso!!!"); 

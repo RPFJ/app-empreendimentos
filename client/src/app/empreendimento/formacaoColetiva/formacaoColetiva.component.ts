@@ -13,8 +13,9 @@ export class FormacaoColetivaComponent {
         
 
     constructor(private record: RequestService, private router: Router) {}
-
-    formacaoColetiva(){
+    
+    //Função responsável por cadastrar o conteúdo do formulário
+    register(){
         this.record.register(this.registro, 'formacaoColetiva' ).subscribe(
             () => {
                 window.alert("Formação Coletiva cadastrada com sucesso!!!"); 

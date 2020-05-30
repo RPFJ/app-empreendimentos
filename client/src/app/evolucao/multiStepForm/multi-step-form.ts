@@ -1,11 +1,4 @@
-
-const COUNTRY_LIST = [
-  { name: 'Empreendimento', code: 'us' },
-  { name: 'United Kingdoms', code: 'gb' },
-  { name: 'India', code: 'in' }
-];
-
-const DATA_STEP_1 = {
+const EVOLUCAO = {
   empreendimento: {
     type: 'select',
     options: 0,
@@ -75,38 +68,8 @@ const DATA_STEP_1 = {
   }
 };
 
-const DATA_STEP_2 = {
-  questão1: { type: 'textarea', validations: {}, errors: {}, placeholder: 'Questão 1 vai aqui' },
-  a: { type: 'textarea', validations: {}, errors: {}, placeholder: 'a'}
-};
-
-const DATA_STEP_3 = {
-  phone: {
-    type: 'phone',
-    validations: {
-      pattern: /\([0-9]{2}\)[\s][0-9]{4}-[0-9]{4,5}/
-    },
-    errors: {
-      pattern: 'Por favor, insira um número válido'
-    },
-    placeholder: 'Número de Contato'
-  },
-  otp: {
-    type: 'number',
-    validations: {
-      required: true,
-      minLength: 4
-    },
-    errors: {
-      required: 'Esse campo não pode ser nulo',
-      minlength: 'Minimum length should be 4 characters'
-    },
-    placeholder: 'One Time Password'
-  }
-};
-
 const STEP_ITEMS = [
-  { label: 'Relatório de Evolução', data: DATA_STEP_1 }
+  { label: 'Relatório de Evolução', data: EVOLUCAO }
 ];
 
 export { STEP_ITEMS }

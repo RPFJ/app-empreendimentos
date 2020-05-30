@@ -1,8 +1,6 @@
+/* Centraliza o logo na tela de login*/
 #sunflower_logo{
-    /* align-items: right;
-    width: 100px;
-    height: 100px; */
-    display: block;
+display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;

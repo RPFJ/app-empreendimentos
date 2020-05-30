@@ -26,19 +26,16 @@ import { AtividadeEmpreendimentoComponent} from './empreendimento/atividadeEmpre
 import { AreaAtuacaoComponent } from './empreendimento/areaAtuacao/areaAtuacao.component'
 import { TipoOrganizacaoComponent } from './empreendimento/tipoOrganizacao/tipoOrganizacao.component'
 import { EmpreendimentoComponent } from './empreendimento/empreendimento/empreendimento.component'
-import { ContatoComponent} from './empreendimento/contato/contato.component'
 
 // Componentes da Evolucao
-import { OpcaoQuestaoComponent} from './evolucao/opcaoQuestao/opcaoQuestao.component'
 import { QuestaoComponent} from './evolucao/questao/questao.component'
-import { EvolucaoComponent } from './evolucao/evolucao/evolucao.component'
+import { EvolucaoComponent } from './evolucao/multiStepForm/evolucao.component'
 import { GeracaoRendaComponent} from './evolucao/geracaoRenda/geracaoRenda.component'
 
 // Componentes da Rede Economica
 import { TipoRedeComponent} from './redeEconomica/tipoRede/tipoRede.component'
 import { ApoaidorComponent } from './redeEconomica/apoiador/apoiador.component'
 import { RedeEconomicaComponent } from './redeEconomica/redeEconomica/redeEconomica.component'
-import { FormularioComponent } from './evolucao/multiStepForm/formulario.componet'
 import { MultiStepFormComponent } from './evolucao/multiStepForm/multi-step-form.component'
 import { FormatTitlePipe } from './pipes/format-title.pipe'
 
@@ -51,7 +48,6 @@ const routes: Routes = [
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-
   {
    path: 'profile',
     component: ProfileComponent,
@@ -64,14 +60,11 @@ const routes: Routes = [
   { path: 'atividadeEmpreendimento', component: AtividadeEmpreendimentoComponent},
   { path: 'areaAtuacao', component: AreaAtuacaoComponent},
   { path: 'tipoOrganizacao', component: TipoOrganizacaoComponent},
-  { path: 'contato', component: ContatoComponent},
   { path: 'empreendimento', component: EmpreendimentoComponent},
   // Rotas da Evolucao
   { path: 'questao', component: QuestaoComponent},
-  { path: 'opcaoQuestao', component: OpcaoQuestaoComponent},
   { path: 'evolucao', component: EvolucaoComponent},
   { path: 'geracaoRenda', component: GeracaoRendaComponent},
-  { path: 'formulario', component: FormularioComponent},
   { path: 'MultiStepFormComponent', component: MultiStepFormComponent},
   { path: 'FormatTitlePipe', component: FormatTitlePipe},
   
@@ -96,17 +89,13 @@ const routes: Routes = [
     AtividadeEmpreendimentoComponent,
     AreaAtuacaoComponent,
     TipoOrganizacaoComponent, 
-    ContatoComponent,
     EmpreendimentoComponent,
     // Evolução
     QuestaoComponent,
-    OpcaoQuestaoComponent,
     EvolucaoComponent,
     GeracaoRendaComponent, 
-
     FormatTitlePipe,
     MultiStepFormComponent,
-    FormularioComponent, 
     // Rede Economica
     TipoRedeComponent,
     ApoaidorComponent,

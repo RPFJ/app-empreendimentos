@@ -15,9 +15,9 @@ export class RegisterComponent {
   };
 
   constructor(private auth: AuthenticationService, private router: Router) {}
-
+  
+  //Função responsável por cadastrar os usuários
   register() {
-    console.log("credentials: ", this.credentials); 
     this.auth.register(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl("/profile");
