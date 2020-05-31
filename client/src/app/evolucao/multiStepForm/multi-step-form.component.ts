@@ -67,7 +67,7 @@ export class MultiStepFormComponent implements OnInit {
   // Recebe as informações da bunsca no banco de dados e adiciona aos dados do Array STEP_ITEMS 
   buildFormItems(formItems){
     this.stepItems = _.concat(this.stepItems, formItems);
-    this.stepItems.push( { label: 'Revisão e Confirmação de Envio', data: {} }); 
+    //this.stepItems.push( { label: 'Revisão e Confirmação de Envio', data: {} }); 
 
     // NOTE: this can be cofigured to create a single form when needed
     this.stepItems.forEach((data, i) => {
@@ -284,7 +284,7 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   onFormSubmit(): void {
-    // console.log('Dados: ', this.formData);
+   console.log('Dados: ', this.formData);
    this.prepareData(this.formData);
   }
 
